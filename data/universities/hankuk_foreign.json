@@ -1,0 +1,85 @@
+{
+  "university_id": "hankuk_foreign",
+  "name": "한국외국어대학교",
+  "name_short": "한국외대",
+  "location": "서울/경기",
+  "campus": "서울(동대문)/글로벌(용인)",
+  "website": "https://admission.hufs.ac.kr",
+  "year": 2026,
+  "admissions": {
+    "early": {
+      "types": [
+        {
+          "type_name": "학생부교과",
+          "sub_type": "학교장추천",
+          "enrollment": 380,
+          "evaluation": {
+            "elements": [
+              { "name": "교과", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국수영 중 2개 이상 4등급",
+            "subjects_count": 2,
+            "grade_sum": null,
+            "individual_grade": 4
+          },
+          "gpa_reflection": {
+            "subjects": "계열별 반영교과 상이",
+            "method": "상위 등급 반영"
+          }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "서류형",
+          "enrollment": 538,
+          "evaluation": {
+            "elements": [
+              { "name": "서류평가", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": { "required": false }
+        },
+        {
+          "type_name": "논술",
+          "sub_type": "논술형",
+          "enrollment": 468,
+          "evaluation": {
+            "elements": [
+              { "name": "논술", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "인문: 국수영탐(사) 중 3개 합 6 / 자연: 국수영탐(과) 중 3개 합 6",
+            "humanities": { "subjects_count": 3, "grade_sum": 6 },
+            "natural_science": { "subjects_count": 3, "grade_sum": 6 }
+          }
+        }
+      ]
+    },
+    "regular": {
+      "total": 1091,
+      "group": "가/나/다",
+      "group_detail": {
+        "seoul": { "ga": 210, "na": 377, "da": 115 },
+        "global": { "ga": 330, "na": 609, "da": 452 }
+      },
+      "csat_reflection": {
+        "english_method": "등급별 감점",
+        "explore_count": 2,
+        "notes": "자연계열 한국사 반영방법 변경: P/F → 가산점 부여 (2026년 변경)"
+      },
+      "gpa_reflection": { "applied": false, "method": "수능 100%" }
+    }
+  },
+  "key_changes_2026": [
+    "자연계열 한국사 반영방법 변경 (P/F → 가산점)"
+  ],
+  "data_source": {
+    "url": "https://admission.hufs.ac.kr",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 한국외국어대학교 모집요강"
+  }
+}

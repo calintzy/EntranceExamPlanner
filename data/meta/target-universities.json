@@ -1,0 +1,85 @@
+{
+  "year": 2026,
+  "last_updated": "2026-02-18",
+  "categories": {
+    "in_seoul_top": {
+      "description": "인서울 주요 대학 (상위 15개교)",
+      "universities": [
+        { "id": "seoul_nat", "name": "서울대학교", "short": "서울대", "group": "가" },
+        { "id": "yonsei", "name": "연세대학교", "short": "연세대", "group": "가" },
+        { "id": "korea", "name": "고려대학교", "short": "고려대", "group": "나" },
+        { "id": "skku", "name": "성균관대학교", "short": "성균관대", "group": "가" },
+        { "id": "hanyang", "name": "한양대학교", "short": "한양대", "group": "가" },
+        { "id": "chungang", "name": "중앙대학교", "short": "중앙대", "group": "나" },
+        { "id": "kyunghee", "name": "경희대학교", "short": "경희대", "group": "가" },
+        { "id": "sogang", "name": "서강대학교", "short": "서강대", "group": "가" },
+        { "id": "ewha", "name": "이화여자대학교", "short": "이화여대", "group": "가" },
+        { "id": "hankuk_foreign", "name": "한국외국어대학교", "short": "한국외대", "group": "나" },
+        { "id": "seoul_city", "name": "서울시립대학교", "short": "서울시립대", "group": "나" },
+        { "id": "konkuk", "name": "건국대학교", "short": "건국대", "group": "가" },
+        { "id": "dongguk", "name": "동국대학교", "short": "동국대", "group": "가" },
+        { "id": "hongik", "name": "홍익대학교", "short": "홍익대", "group": "가" },
+        { "id": "soongsil", "name": "숭실대학교", "short": "숭실대", "group": "나" }
+      ]
+    },
+    "medical_schools": {
+      "description": "전국 의과대학/의예과",
+      "universities": [
+        { "id": "seoul_nat_med", "name": "서울대학교 의과대학", "location": "서울" },
+        { "id": "yonsei_med", "name": "연세대학교 의과대학", "location": "서울" },
+        { "id": "korea_med", "name": "고려대학교 의과대학", "location": "서울" },
+        { "id": "skku_med", "name": "성균관대학교 의과대학", "location": "서울/경기" },
+        { "id": "ulsan_med", "name": "울산대학교 의과대학", "location": "서울(서울아산병원)" },
+        { "id": "hanyang_med", "name": "한양대학교 의과대학", "location": "서울" },
+        { "id": "chungang_med", "name": "중앙대학교 의과대학", "location": "서울" },
+        { "id": "kyunghee_med", "name": "경희대학교 의과대학", "location": "서울" },
+        { "id": "ewha_med", "name": "이화여자대학교 의과대학", "location": "서울" },
+        { "id": "catholic_med", "name": "가톨릭대학교 의과대학", "location": "서울/경기" },
+        { "id": "inha_med", "name": "인하대학교 의과대학", "location": "인천" },
+        { "id": "ajou_med", "name": "아주대학교 의과대학", "location": "경기" },
+        { "id": "hallym_med", "name": "한림대학교 의과대학", "location": "강원" },
+        { "id": "kangwon_med", "name": "강원대학교 의과대학", "location": "강원" },
+        { "id": "yonsei_wonju_med", "name": "연세대학교 원주의과대학", "location": "강원" },
+        { "id": "chungnam_med", "name": "충남대학교 의과대학", "location": "대전" },
+        { "id": "chungbuk_med", "name": "충북대학교 의과대학", "location": "충북" },
+        { "id": "konyang_med", "name": "건양대학교 의과대학", "location": "대전" },
+        { "id": "dankook_med", "name": "단국대학교 의과대학", "location": "충남" },
+        { "id": "soonchunhyang_med", "name": "순천향대학교 의과대학", "location": "충남" },
+        { "id": "kyungpook_med", "name": "경북대학교 의과대학", "location": "대구" },
+        { "id": "keimyung_med", "name": "계명대학교 의과대학", "location": "대구" },
+        { "id": "daegu_catholic_med", "name": "대구가톨릭대학교 의과대학", "location": "대구" },
+        { "id": "yeungnam_med", "name": "영남대학교 의과대학", "location": "대구" },
+        { "id": "dongguk_gyeongju_med", "name": "동국대학교 의과대학(경주)", "location": "경북" },
+        { "id": "pusan_med", "name": "부산대학교 의과대학", "location": "부산" },
+        { "id": "inje_med", "name": "인제대학교 의과대학", "location": "부산" },
+        { "id": "dong_a_med", "name": "동아대학교 의과대학", "location": "부산" },
+        { "id": "kosin_med", "name": "고신대학교 의과대학", "location": "부산" },
+        { "id": "gyeongsang_med", "name": "경상국립대학교 의과대학", "location": "경남" },
+        { "id": "chonnam_med", "name": "전남대학교 의과대학", "location": "광주" },
+        { "id": "chosun_med", "name": "조선대학교 의과대학", "location": "광주" },
+        { "id": "wonkwang_med", "name": "원광대학교 의과대학", "location": "전북" },
+        { "id": "jeonbuk_med", "name": "전북대학교 의과대학", "location": "전북" },
+        { "id": "jeju_med", "name": "제주대학교 의과대학", "location": "제주" },
+        { "id": "eulji_med", "name": "을지대학교 의과대학", "location": "대전" },
+        { "id": "cha_med", "name": "차의과학대학교", "location": "경기" },
+        { "id": "gachon_med", "name": "가천대학교 의과대학", "location": "인천" }
+      ]
+    },
+    "corporate_tracks": {
+      "description": "대기업 채용조건형 계약학과 (13개교 18학과)",
+      "tracks": [
+        { "id": "skku_samsung_semi", "university": "성균관대", "department": "반도체시스템공학과", "corp": "삼성전자" },
+        { "id": "skku_samsung_sw", "university": "성균관대", "department": "지능형소프트웨어학과", "corp": "삼성전자" },
+        { "id": "skku_samsung_battery", "university": "성균관대", "department": "배터리공학과", "corp": "삼성SDI" },
+        { "id": "yonsei_samsung_semi", "university": "연세대", "department": "시스템반도체공학과", "corp": "삼성전자" },
+        { "id": "kaist_samsung_semi", "university": "KAIST", "department": "반도체시스템공학과", "corp": "삼성전자" },
+        { "id": "korea_sk_semi", "university": "고려대", "department": "반도체공학과", "corp": "SK하이닉스" },
+        { "id": "sogang_sk_semi", "university": "서강대", "department": "시스템반도체공학과", "corp": "SK하이닉스" },
+        { "id": "hanyang_sk_semi", "university": "한양대", "department": "반도체공학과", "corp": "SK하이닉스" },
+        { "id": "korea_hyundai_mobility", "university": "고려대", "department": "스마트모빌리티학부", "corp": "현대자동차" },
+        { "id": "hanyang_hyundai_auto", "university": "한양대", "department": "미래자동차공학과", "corp": "현대자동차" },
+        { "id": "yonsei_lg_tech", "university": "연세대", "department": "차세대기술융합학과", "corp": "LG전자" }
+      ]
+    }
+  }
+}

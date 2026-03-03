@@ -1,0 +1,85 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "대기업 연계 채용조건형 계약학과 스키마 (2026학년도)",
+  "type": "object",
+  "properties": {
+    "track_id": {
+      "type": "string",
+      "description": "고유 식별자 (예: skku_samsung_semiconductor)"
+    },
+    "university": {
+      "type": "string",
+      "description": "대학교명"
+    },
+    "department": {
+      "type": "string",
+      "description": "학과명"
+    },
+    "corporation": {
+      "type": "string",
+      "description": "연계 기업명"
+    },
+    "year": {
+      "type": "integer"
+    },
+    "enrollment": {
+      "type": "integer",
+      "description": "모집인원"
+    },
+    "admission_type": {
+      "type": "object",
+      "properties": {
+        "early": {
+          "type": "object",
+          "properties": {
+            "count": { "type": "integer" },
+            "types": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "name": { "type": "string" },
+                  "count": { "type": "integer" },
+                  "method": { "type": "string" }
+                }
+              }
+            }
+          }
+        },
+        "regular": {
+          "type": "object",
+          "properties": {
+            "count": { "type": "integer" },
+            "method": { "type": "string" }
+          }
+        }
+      }
+    },
+    "benefits": {
+      "type": "object",
+      "properties": {
+        "tuition": { "type": "string", "description": "등록금 지원" },
+        "stipend": { "type": "string", "description": "생활비/보조금" },
+        "internship": { "type": "boolean", "description": "인턴십 제공" },
+        "employment_guarantee": { "type": "boolean", "description": "취업 보장" },
+        "other": { "type": "string", "description": "기타 혜택" }
+      }
+    },
+    "program_type": {
+      "type": "string",
+      "description": "과정 유형 (학부 4년, 학석사 5년 등)"
+    },
+    "obligations": {
+      "type": "string",
+      "description": "의무사항 (의무 근무 기간 등)"
+    },
+    "data_source": {
+      "type": "object",
+      "properties": {
+        "url": { "type": "string" },
+        "retrieved_date": { "type": "string", "format": "date" }
+      }
+    }
+  },
+  "required": ["track_id", "university", "department", "corporation", "year"]
+}

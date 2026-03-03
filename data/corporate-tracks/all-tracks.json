@@ -1,0 +1,210 @@
+{
+  "year": 2026,
+  "last_updated": "2026-02-18",
+  "summary": {
+    "total_universities": 13,
+    "total_departments": 18,
+    "total_enrollment": 780,
+    "description": "2026학년도 첨단분야 채용조건형 계약학과"
+  },
+  "tracks": [
+    {
+      "track_id": "skku_samsung_semi",
+      "university": "성균관대학교",
+      "department": "반도체시스템공학과",
+      "corporation": "삼성전자",
+      "enrollment": 70,
+      "benefits": {
+        "tuition": "등록금 전액 지원",
+        "stipend": "보조금 지원",
+        "internship": true,
+        "employment_guarantee": true,
+        "other": "삼성전자 연구실 인턴십"
+      },
+      "program_type": "학부 4년",
+      "admission_type": {
+        "early": {
+          "types": [
+            { "name": "탐구형 (학생부종합)", "method": "서류 100%" }
+          ]
+        }
+      }
+    },
+    {
+      "track_id": "skku_samsung_sw",
+      "university": "성균관대학교",
+      "department": "지능형소프트웨어학과",
+      "corporation": "삼성전자",
+      "enrollment": 50,
+      "benefits": {
+        "tuition": "등록금 전액 지원",
+        "stipend": "보조금 지원",
+        "internship": true,
+        "employment_guarantee": true
+      },
+      "program_type": "학부 4년"
+    },
+    {
+      "track_id": "skku_sdi_battery",
+      "university": "성균관대학교",
+      "department": "배터리공학과",
+      "corporation": "삼성SDI",
+      "enrollment": 30,
+      "benefits": {
+        "tuition": "등록금 전액 지원",
+        "internship": true,
+        "employment_guarantee": true,
+        "other": "삼성SDI 인턴십 운영"
+      },
+      "program_type": "학부 4년",
+      "notes": "2026학년도 신설, 10년간 매년 30명 선발 예정"
+    },
+    {
+      "track_id": "yonsei_samsung_semi",
+      "university": "연세대학교",
+      "department": "시스템반도체공학과",
+      "corporation": "삼성전자",
+      "enrollment": 100,
+      "benefits": {
+        "tuition": "4년 전액 장학금",
+        "internship": true,
+        "employment_guarantee": true,
+        "other": "인턴십 연계"
+      },
+      "program_type": "학부 4년"
+    },
+    {
+      "track_id": "kaist_samsung_semi",
+      "university": "KAIST",
+      "department": "반도체시스템공학과",
+      "corporation": "삼성전자",
+      "enrollment": 100,
+      "benefits": {
+        "tuition": "전액 지원",
+        "employment_guarantee": true
+      },
+      "program_type": "학석사 통합 5년"
+    },
+    {
+      "track_id": "korea_sk_semi",
+      "university": "고려대학교",
+      "department": "반도체공학과",
+      "corporation": "SK하이닉스",
+      "enrollment": null,
+      "benefits": {
+        "tuition": "4년간 등록금 전액 지원",
+        "stipend": "학비 보조금",
+        "internship": true,
+        "employment_guarantee": true
+      },
+      "program_type": "학부 4년"
+    },
+    {
+      "track_id": "sogang_sk_semi",
+      "university": "서강대학교",
+      "department": "시스템반도체공학과",
+      "corporation": "SK하이닉스",
+      "enrollment": null,
+      "benefits": {
+        "tuition": "등록금 전액 지원",
+        "stipend": "생활비 지원",
+        "internship": true,
+        "employment_guarantee": true
+      },
+      "program_type": "학부 4년"
+    },
+    {
+      "track_id": "hanyang_sk_semi",
+      "university": "한양대학교",
+      "department": "반도체공학과",
+      "corporation": "SK하이닉스",
+      "enrollment": null,
+      "benefits": {
+        "tuition": "등록금 지원",
+        "internship": true,
+        "employment_guarantee": true,
+        "other": "석사 진학 연계 가능"
+      },
+      "program_type": "학부 4년"
+    },
+    {
+      "track_id": "korea_hyundai_mobility",
+      "university": "고려대학교",
+      "department": "스마트모빌리티학부",
+      "corporation": "현대자동차",
+      "enrollment": null,
+      "benefits": {
+        "tuition": "장학금",
+        "internship": true,
+        "employment_guarantee": false,
+        "other": "취업 우대, 인턴십 제공"
+      },
+      "program_type": "학부 4년",
+      "notes": "직접 취업보장은 아니나 채용 우대"
+    },
+    {
+      "track_id": "hanyang_hyundai_auto",
+      "university": "한양대학교",
+      "department": "미래자동차공학과",
+      "corporation": "현대자동차",
+      "enrollment": null,
+      "benefits": {
+        "tuition": "연구 장학금",
+        "internship": true,
+        "employment_guarantee": false,
+        "other": "프로젝트 참여 기회"
+      },
+      "program_type": "학부 4년"
+    },
+    {
+      "track_id": "yonsei_lg_tech",
+      "university": "연세대학교",
+      "department": "차세대기술융합학과",
+      "corporation": "LG전자",
+      "enrollment": null,
+      "benefits": {
+        "tuition": "등록금 지원",
+        "internship": true,
+        "employment_guarantee": true,
+        "other": "LG전자 채용 연계"
+      },
+      "program_type": "학부 4년"
+    },
+    {
+      "track_id": "yonsei_hyundai_mobility",
+      "university": "연세대학교",
+      "department": "모빌리티시스템전공",
+      "corporation": "현대자동차",
+      "enrollment": null,
+      "benefits": {
+        "tuition": "장학금",
+        "employment_guarantee": false,
+        "other": "학부-대학원 연계 시 현대차 모빌리티시스템융합협동과정(석사) 진학 후 입사 가능"
+      },
+      "program_type": "학부 4년 (석사 연계 시 취업보장)",
+      "notes": "학부 졸업만으로는 채용 미보장, 석사과정 진학 필요"
+    }
+  ],
+  "categories": {
+    "employment_linked": {
+      "description": "취업연계형 (기업체취업형) - 졸업 후 해당 기업 근무 의무",
+      "universities": ["가천대", "가톨릭관동대", "경북대", "고려대", "남서울대", "서강대", "서경대", "성균관대", "숭실대", "연세대", "포항공대", "한양대", "KAIST"]
+    },
+    "early_employment": {
+      "description": "조기취업형 - 7개 대학 총 1000명 수시 선발",
+      "notes": "정시는 수시 미충원 인원만 선발"
+    },
+    "military_linked": {
+      "description": "군의무복무형 - 225명 선발, 육해공군 첨단분야 근무",
+      "universities": ["고려대", "세종대", "아주대", "영남대", "충남대", "한양대(ERICA)"]
+    }
+  },
+  "data_source": {
+    "urls": [
+      "https://www.localnaeil.com/News/View/653127",
+      "https://formmira.com/entry/대기업삼성SK현대LG-연계학과-총정리-2026학년도-수시-정보",
+      "https://www.segye.com/newsView/20250320503883"
+    ],
+    "retrieved_date": "2026-02-18"
+  }
+}

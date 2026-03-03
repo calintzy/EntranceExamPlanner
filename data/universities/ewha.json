@@ -1,0 +1,78 @@
+{
+  "university_id": "ewha",
+  "name": "이화여자대학교",
+  "name_short": "이화여대",
+  "location": "서울",
+  "campus": "신촌",
+  "website": "https://admission.ewha.ac.kr",
+  "year": 2026,
+  "admissions": {
+    "early": {
+      "types": [
+        {
+          "type_name": "학생부교과",
+          "sub_type": "고교추천",
+          "enrollment": 400,
+          "evaluation": {
+            "elements": [
+              { "name": "교과", "ratio": 80 },
+              { "name": "면접", "ratio": 20 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국영수탐(1) 중 2개 합 5 (2026년 신규 도입)",
+            "subjects_count": 2,
+            "grade_sum": 5,
+            "notes": "2025학년도 미적용 → 2026학년도 신규 적용"
+          }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "미래인재",
+          "enrollment": 700,
+          "evaluation": {
+            "elements": [
+              { "name": "서류평가", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": { "required": false }
+        },
+        {
+          "type_name": "논술",
+          "sub_type": "논술전형",
+          "enrollment": 340,
+          "evaluation": {
+            "elements": [
+              { "name": "논술", "ratio": 70 },
+              { "name": "학생부", "ratio": 30 }
+            ]
+          },
+          "csat_minimum": { "required": true }
+        }
+      ]
+    },
+    "regular": {
+      "total": 1082,
+      "group": "가/나",
+      "csat_reflection": {
+        "by_track": {
+          "humanities": {
+            "korean": 30, "math": 25, "english": 20, "explore": 25
+          },
+          "natural_science": {
+            "korean": 25, "math": 30, "english": 20, "explore": 25
+          }
+        },
+        "english_method": "등급별 환산점수 (비율 반영)",
+        "explore_count": 2
+      },
+      "gpa_reflection": { "applied": false, "method": "수능 100%" }
+    }
+  },
+  "data_source": {
+    "url": "https://admission.ewha.ac.kr",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 이화여자대학교 모집요강"
+  }
+}

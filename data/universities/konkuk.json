@@ -1,0 +1,87 @@
+{
+  "university_id": "konkuk",
+  "name": "건국대학교",
+  "name_short": "건국대",
+  "location": "서울",
+  "campus": "서울(광진)",
+  "website": "https://enter.konkuk.ac.kr",
+  "year": 2026,
+  "admissions": {
+    "early": {
+      "total": 1965,
+      "types": [
+        {
+          "type_name": "학생부종합",
+          "sub_type": "KU자기추천",
+          "enrollment": 672,
+          "evaluation": {
+            "elements": [
+              { "name": "서류평가", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": { "required": false }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "KU학교추천",
+          "enrollment": 450,
+          "evaluation": {
+            "elements": [
+              { "name": "서류평가", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국수영탐 중 2개 합 5 (선택과목 지정 없음)"
+          }
+        },
+        {
+          "type_name": "학생부교과",
+          "sub_type": "교과우수",
+          "enrollment": 477,
+          "evaluation": {
+            "elements": [
+              { "name": "교과", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국수영탐 중 2개 합 5"
+          }
+        },
+        {
+          "type_name": "논술",
+          "sub_type": "논술전형(KU논술우수)",
+          "enrollment": 328,
+          "evaluation": {
+            "elements": [
+              { "name": "논술", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국수영탐 중 2개 합 5"
+          }
+        }
+      ]
+    },
+    "regular": {
+      "total": 1350,
+      "group": "가/나",
+      "csat_reflection": {
+        "by_track": {
+          "humanities": { "korean": 35, "math": 25, "english": 15, "explore": 25 },
+          "natural_science": { "korean": 25, "math": 35, "english": 15, "explore": 25 }
+        },
+        "english_method": "등급별 환산점수 (비율 반영)",
+        "explore_count": 2
+      },
+      "gpa_reflection": { "applied": false, "method": "수능 100%" }
+    }
+  },
+  "data_source": {
+    "url": "https://enter.konkuk.ac.kr",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 건국대학교 모집요강"
+  }
+}

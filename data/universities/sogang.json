@@ -1,0 +1,77 @@
+{
+  "university_id": "sogang",
+  "name": "서강대학교",
+  "name_short": "서강대",
+  "location": "서울",
+  "campus": "신수",
+  "website": "https://admission.sogang.ac.kr",
+  "year": 2026,
+  "admissions": {
+    "early": {
+      "types": [
+        {
+          "type_name": "학생부교과",
+          "sub_type": "지역균형",
+          "enrollment": 180,
+          "evaluation": {
+            "elements": [
+              { "name": "교과", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국영수탐 중 3개 등급 합 6"
+          }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "일반",
+          "enrollment": 565,
+          "evaluation": {
+            "elements": [
+              { "name": "서류평가", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": { "required": false }
+        },
+        {
+          "type_name": "논술",
+          "sub_type": "논술전형",
+          "enrollment": 172,
+          "evaluation": {
+            "elements": [
+              { "name": "논술", "ratio": 60 },
+              { "name": "학생부", "ratio": 40 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국영수탐 중 3개 등급 합 5"
+          }
+        }
+      ]
+    },
+    "regular": {
+      "total": 622,
+      "group": "나/다",
+      "csat_reflection": {
+        "korean": 25,
+        "math": 40,
+        "english": 10,
+        "explore": 25,
+        "english_method": "등급별 환산",
+        "explore_count": 2,
+        "notes": "수학 반영비율이 높아 수학 강세 수험생에게 유리"
+      },
+      "gpa_reflection": {
+        "applied": false,
+        "method": "수능 100%"
+      }
+    }
+  },
+  "data_source": {
+    "url": "https://admission.sogang.ac.kr",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 서강대학교 모집요강"
+  }
+}

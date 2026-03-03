@@ -1,0 +1,104 @@
+{
+  "university_id": "hanyang",
+  "name": "한양대학교",
+  "name_short": "한양대",
+  "location": "서울",
+  "campus": "서울",
+  "website": "https://admission.hanyang.ac.kr",
+  "year": 2026,
+  "admissions": {
+    "early": {
+      "types": [
+        {
+          "type_name": "학생부교과",
+          "sub_type": "추천형",
+          "enrollment": 341,
+          "evaluation": {
+            "elements": [
+              { "name": "교과", "ratio": 90 },
+              { "name": "정성평가", "ratio": 10 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국영수탐 중 3개 등급 합 6"
+          }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "서류형",
+          "enrollment": 621,
+          "evaluation": {
+            "elements": [
+              { "name": "종합평가", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": { "required": false }
+        },
+        {
+          "type_name": "논술",
+          "sub_type": "논술전형",
+          "enrollment": 233,
+          "evaluation": {
+            "elements": [
+              { "name": "논술", "ratio": 90 },
+              { "name": "학생부", "ratio": 10 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국영수탐 중 3개 등급 합 5"
+          }
+        }
+      ]
+    },
+    "regular": {
+      "total": 1194,
+      "group": "가/나/다",
+      "group_detail": {
+        "ga": 535,
+        "na": 599,
+        "da": 60
+      },
+      "csat_reflection": {
+        "by_track": {
+          "natural_science": {
+            "korean": 25,
+            "math": 40,
+            "english": 10,
+            "explore": 25
+          },
+          "humanities": {
+            "korean": 35,
+            "math": 30,
+            "english": 10,
+            "explore": 25
+          },
+          "business": {
+            "korean": 35,
+            "math": 35,
+            "english": 10,
+            "explore": 20,
+            "notes": "상경계열 및 한양인터칼리지학부"
+          }
+        },
+        "english_method": "등급별 환산 (10% 반영)",
+        "explore_count": 2
+      },
+      "gpa_reflection": {
+        "applied": true,
+        "ratio": 10,
+        "method": "학생부종합평가 10% 반영 (2026년 신규)"
+      }
+    }
+  },
+  "key_changes_2026": [
+    "정시 가군→나군 대거 이동 (가535/나599)",
+    "정시에서 학생부종합평가 10% 반영 신규 도입"
+  ],
+  "data_source": {
+    "url": "https://admission.hanyang.ac.kr",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 한양대학교 모집요강"
+  }
+}

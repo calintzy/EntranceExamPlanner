@@ -1,0 +1,115 @@
+{
+  "university_id": "chungang",
+  "name": "중앙대학교",
+  "name_short": "중앙대",
+  "location": "서울",
+  "campus": "서울(흑석)/안성",
+  "website": "https://admission.cau.ac.kr",
+  "year": 2026,
+  "admissions": {
+    "early": {
+      "total": 2863,
+      "types": [
+        {
+          "type_name": "학생부교과",
+          "sub_type": "지역균형",
+          "enrollment": 503,
+          "evaluation": {
+            "elements": [
+              { "name": "학생부 교과", "ratio": 90 },
+              { "name": "비교과(출결)", "ratio": 10 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "인문: 국수영탐(사) 중 3개 합 6 / 자연: 국수영탐(과) 중 3개 합 6",
+            "humanities": { "subjects_count": 3, "grade_sum": 6 },
+            "natural_science": { "subjects_count": 3, "grade_sum": 6 }
+          },
+          "gpa_reflection": {
+            "subjects": "상위 8과목",
+            "method": "석차등급 반영"
+          }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "융합형인재",
+          "enrollment": 454,
+          "evaluation": {
+            "elements": [
+              { "name": "서류평가", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": { "required": false }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "탐구형인재",
+          "enrollment": 509,
+          "evaluation": {
+            "elements": [
+              { "name": "서류", "ratio": 40 },
+              { "name": "면접", "ratio": 60 }
+            ]
+          },
+          "csat_minimum": { "required": false }
+        },
+        {
+          "type_name": "논술",
+          "sub_type": "논술전형",
+          "enrollment": 484,
+          "evaluation": {
+            "elements": [
+              { "name": "논술", "ratio": 70 },
+              { "name": "교과", "ratio": 20 },
+              { "name": "출결", "ratio": 10 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "인문: 국수영탐(사) 중 3개 합 6 / 자연: 국수영탐(과) 중 3개 합 6",
+            "humanities": { "subjects_count": 3, "grade_sum": 6 },
+            "natural_science": { "subjects_count": 3, "grade_sum": 6 }
+          },
+          "gpa_reflection": {
+            "subjects": "상위 8과목",
+            "method": "석차등급 반영"
+          }
+        }
+      ]
+    },
+    "regular": {
+      "total": 1704,
+      "group": "가/나/다",
+      "group_detail": { "ga": 619, "na": 640, "da": 445 },
+      "csat_reflection": {
+        "by_track": {
+          "humanities_a": {
+            "departments": "인문계열 A",
+            "korean": 35, "math": 30, "explore": 35
+          },
+          "humanities_b": {
+            "departments": "경영/경제 등",
+            "korean": 30, "math": 40, "explore": 30
+          },
+          "natural_science": {
+            "departments": "자연계열",
+            "korean": 30, "math": 35, "explore": 35
+          }
+        },
+        "english_method": "등급별 감점 (4등급까지 감점폭 작음)",
+        "explore_count": 2
+      },
+      "gpa_reflection": { "applied": false, "method": "수능 100%" }
+    }
+  },
+  "required_courses": {
+    "has_requirements": true,
+    "description": "서울대, 연세대, 고려대와 함께 4개교 중 하나로 전공 연계 권장과목 제시"
+  },
+  "data_source": {
+    "url": "https://admission.cau.ac.kr",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 중앙대학교 모집요강"
+  }
+}

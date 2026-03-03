@@ -1,0 +1,88 @@
+{
+  "university_id": "soongsil",
+  "name": "숭실대학교",
+  "name_short": "숭실대",
+  "location": "서울",
+  "campus": "서울(동작)",
+  "website": "https://iphak.ssu.ac.kr",
+  "year": 2026,
+  "total_enrollment": 3031,
+  "admissions": {
+    "early": {
+      "total": 1674,
+      "types": [
+        {
+          "type_name": "학생부교과",
+          "sub_type": "학생부우수자",
+          "enrollment": 443,
+          "evaluation": {
+            "elements": [
+              { "name": "교과", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "인문: 국수(미적/기하)영탐(사) 중 3개 합 7 / 자연: 국수(미적/기하)영탐(과) 중 3개 합 7",
+            "subjects_count": 3,
+            "grade_sum": 7,
+            "notes": "수학 미적분/기하 지정, 탐구 과목 계열 지정"
+          }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "SSU미래인재",
+          "enrollment": 535,
+          "evaluation": {
+            "elements": [
+              { "name": "1단계: 서류", "ratio": 100 },
+              { "name": "2단계: 서류+면접", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": { "required": false }
+        },
+        {
+          "type_name": "논술",
+          "sub_type": "논술전형",
+          "enrollment": 254,
+          "evaluation": {
+            "elements": [
+              { "name": "논술", "ratio": 90 },
+              { "name": "학생부", "ratio": 10 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국수영탐 중 3개 합 7 (수학 미적/기하, 탐구 계열 지정)"
+          }
+        }
+      ]
+    },
+    "regular": {
+      "total": 1357,
+      "group": "가/나/다",
+      "group_detail": { "ga": 425, "na": 245, "da": 427 },
+      "csat_reflection": {
+        "by_track": {
+          "humanities": { "korean": 35, "math": 20, "english": 20, "explore": 25 },
+          "business": { "korean": 30, "math": 25, "english": 20, "explore": 25 },
+          "natural_science": { "korean": 20, "math": 35, "english": 20, "explore": 25 },
+          "it_sw": { "korean": 20, "math": 35, "english": 20, "explore": 25 }
+        },
+        "english_method": "등급별 환산점수 (비율 반영)",
+        "explore_count": 2,
+        "notes": "수학 반영비율 25% 이하 대학 (인문계열)"
+      },
+      "gpa_reflection": { "applied": false, "method": "수능 100%" }
+    }
+  },
+  "key_changes_2026": [
+    "정시 인문/경상계열 수능 반영비율 변경",
+    "정시 인문/경상계열 사탐 응시 과목별 가산점 신설 (과목당 2.5%, 최대 5%)",
+    "AI소프트웨어학부 80명 선발 (주요 학과)"
+  ],
+  "data_source": {
+    "url": "https://iphak.ssu.ac.kr",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 숭실대학교 모집요강"
+  }
+}

@@ -1,0 +1,136 @@
+{
+  "university_id": "seoul_nat",
+  "name": "서울대학교",
+  "name_short": "서울대",
+  "location": "서울",
+  "campus": "관악",
+  "website": "https://admission.snu.ac.kr",
+  "year": 2026,
+  "total_enrollment": 3377,
+  "admissions": {
+    "early": {
+      "total": 2024,
+      "types": [
+        {
+          "type_name": "학생부종합",
+          "sub_type": "지역균형전형",
+          "enrollment": 509,
+          "evaluation": {
+            "elements": [
+              { "name": "서류평가", "ratio": 60 },
+              { "name": "면접", "ratio": 40 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국수영탐(2) 중 3개 등급 합 7 이내",
+            "subjects_count": 3,
+            "grade_sum": 7,
+            "korean_required": false,
+            "math_required": false,
+            "english_required": false,
+            "explore_required": false
+          },
+          "gpa_reflection": {
+            "subjects": "전과목",
+            "method": "정성평가 (서류평가에 포함)",
+            "grade_weight_by_year": null
+          },
+          "notes": "고등학교장 추천 2명 이내, 학교폭력 기재사항 반영"
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "일반전형",
+          "enrollment": 1515,
+          "evaluation": {
+            "elements": [
+              { "name": "1단계: 서류평가", "ratio": 100 },
+              { "name": "2단계: 서류", "ratio": 40 },
+              { "name": "2단계: 면접", "ratio": 60 }
+            ]
+          },
+          "csat_minimum": {
+            "required": false,
+            "description": "없음 (미술대/체육교육과 제외)"
+          },
+          "gpa_reflection": {
+            "subjects": "전과목",
+            "method": "정성평가 (서류평가에 포함)"
+          },
+          "notes": "1단계 2배수 선발, 면접 비중 높음"
+        }
+      ]
+    },
+    "regular": {
+      "total": 1353,
+      "group": "나",
+      "types": [
+        {
+          "sub_type": "지역균형전형",
+          "enrollment": 152,
+          "evaluation": {
+            "elements": [
+              { "name": "수능", "ratio": 60 },
+              { "name": "교과평가", "ratio": 40 }
+            ]
+          }
+        },
+        {
+          "sub_type": "일반전형",
+          "enrollment": 1201,
+          "evaluation": {
+            "elements": [
+              { "name": "1단계: 수능", "ratio": 100 },
+              { "name": "2단계: 수능", "ratio": 80 },
+              { "name": "2단계: 교과평가", "ratio": 20 }
+            ]
+          }
+        }
+      ],
+      "csat_reflection": {
+        "korean": 33.3,
+        "math": 40,
+        "english": 0,
+        "explore": 26.7,
+        "history": 0,
+        "english_method": "등급별 감점 (미반영, 별도 자격요건)",
+        "explore_count": 2,
+        "math_bonus": null,
+        "science_bonus": null,
+        "notes": "국어100+수학120+탐구80 = 300점 만점, 영어 미반영"
+      },
+      "gpa_reflection": {
+        "applied": true,
+        "ratio": 20,
+        "method": "교과평가 (정성평가)"
+      }
+    }
+  },
+  "required_courses": {
+    "has_requirements": true,
+    "description": "전공 연계 교과이수 과목을 핵심권장과목/권장과목으로 구분하여 제시",
+    "criteria_1": {
+      "description": "교과이수기준Ⅰ",
+      "explore": "사회 3과목 + 과학 3과목 또는 사회 2과목 + 과학 4과목",
+      "life_liberal": "제2외국어 또는 한문 중 1과목"
+    },
+    "criteria_2": {
+      "description": "교과이수기준Ⅱ",
+      "math": "일반선택 4과목 또는 일반선택 3과목 + 진로선택 1과목",
+      "science": "일반선택 3과목 + 진로선택 2과목 또는 일반선택 2과목 + 진로선택 3과목",
+      "social": "일반선택 3과목 + 진로선택 1과목 또는 일반선택 2과목 + 진로선택 2과목"
+    }
+  },
+  "record_evaluation": {
+    "academic_ability": "교과 학업성취도, 학업 태도와 탐구심",
+    "major_relevance": "전공 관련 교과이수 및 성취도",
+    "personal_qualities": "협업능력, 나눔과 배려, 성실성, 소통능력",
+    "growth_potential": "자기주도성, 도전정신, 창의적 문제해결력",
+    "key_items": ["세부능력 및 특기사항(세특)", "창의적 체험활동(정규 동아리)", "행동특성 및 종합의견"]
+  },
+  "data_source": {
+    "url": "https://admission.snu.ac.kr",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 서울대학교 수시/정시 모집요강"
+  }
+}

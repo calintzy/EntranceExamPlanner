@@ -1,0 +1,85 @@
+{
+  "university_id": "seoul_city",
+  "name": "서울시립대학교",
+  "name_short": "서울시립대",
+  "location": "서울",
+  "campus": "전농",
+  "website": "https://iphak.uos.ac.kr",
+  "year": 2026,
+  "admissions": {
+    "early": {
+      "types": [
+        {
+          "type_name": "학생부교과",
+          "sub_type": "지역균형선발",
+          "enrollment": 245,
+          "evaluation": {
+            "elements": [
+              { "name": "교과", "ratio": 70 },
+              { "name": "면접", "ratio": 30 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국수영 중 2개 이상 4등급",
+            "subjects_count": 2,
+            "individual_grade": 4
+          },
+          "gpa_reflection": {
+            "subjects": "상위 10개 교과",
+            "method": "석차등급 반영"
+          }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "면접형",
+          "enrollment": 380,
+          "evaluation": {
+            "elements": [
+              { "name": "서류", "ratio": 40 },
+              { "name": "면접", "ratio": 60 }
+            ]
+          },
+          "csat_minimum": { "required": false }
+        },
+        {
+          "type_name": "논술",
+          "sub_type": "논술전형",
+          "enrollment": 76,
+          "evaluation": {
+            "elements": [
+              { "name": "논술", "ratio": 70 },
+              { "name": "교과", "ratio": 30 }
+            ]
+          },
+          "csat_minimum": { "required": false },
+          "gpa_reflection": {
+            "subjects": "상위 10개 등급",
+            "method": "석차등급 반영"
+          }
+        }
+      ]
+    },
+    "regular": {
+      "total": 696,
+      "group": "가/나/다",
+      "group_detail": { "ga": 122, "na": 539, "da": 35 },
+      "csat_reflection": {
+        "english_method": "등급별 감점",
+        "explore_count": 2,
+        "notes": "인문계열 I/II, 자연계열 I/II로 개편 (기존 3유형 → 2유형)"
+      },
+      "gpa_reflection": { "applied": false, "method": "수능 100%" }
+    }
+  },
+  "key_changes_2026": [
+    "정시 모집인원 56명 증가 (상위15개대 중 최대 증가폭)",
+    "수능 반영 유형 개편: 인문 I/II/III → I/II, 자연 I/II/III → I/II"
+  ],
+  "special_notes": "서울시립대는 서울시 소속 공립대학으로 등록금이 국립대 수준 (약 170만원/학기)",
+  "data_source": {
+    "url": "https://iphak.uos.ac.kr",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 서울시립대학교 모집요강"
+  }
+}

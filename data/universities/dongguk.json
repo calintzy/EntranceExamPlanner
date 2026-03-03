@@ -1,0 +1,79 @@
+{
+  "university_id": "dongguk",
+  "name": "동국대학교",
+  "name_short": "동국대",
+  "location": "서울",
+  "campus": "서울(중구)",
+  "website": "https://ipsi.dongguk.edu",
+  "year": 2026,
+  "admissions": {
+    "early": {
+      "types": [
+        {
+          "type_name": "학생부교과",
+          "sub_type": "학교장추천",
+          "enrollment": 420,
+          "evaluation": {
+            "elements": [
+              { "name": "교과", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국수영탐 중 2개 합 5 (선택과목 지정 없음)",
+            "subjects_count": 2,
+            "grade_sum": 5
+          }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "Do Dream(두드림)",
+          "enrollment": 580,
+          "evaluation": {
+            "elements": [
+              { "name": "서류평가", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": { "required": false }
+        },
+        {
+          "type_name": "논술",
+          "sub_type": "논술전형",
+          "enrollment": 370,
+          "evaluation": {
+            "elements": [
+              { "name": "논술", "ratio": 60 },
+              { "name": "학생부", "ratio": 40 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국수영탐 중 2개 합 5"
+          }
+        }
+      ]
+    },
+    "regular": {
+      "total": 940,
+      "group": "가/나",
+      "csat_reflection": {
+        "by_track": {
+          "humanities": { "korean": 35, "math": 20, "english": 20, "explore": 25 },
+          "natural_science": { "korean": 20, "math": 35, "english": 20, "explore": 25 }
+        },
+        "english_method": "등급별 환산점수 (비율 반영)",
+        "explore_count": 2,
+        "notes": "수학 반영비율 25% 이하 대학 (수학 약한 학생에게 유리)"
+      },
+      "gpa_reflection": { "applied": false, "method": "수능 100%" }
+    }
+  },
+  "key_changes_2026": [
+    "정시 모집인원 28명 증가"
+  ],
+  "data_source": {
+    "url": "https://ipsi.dongguk.edu",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 동국대학교 모집요강"
+  }
+}

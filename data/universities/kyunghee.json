@@ -1,0 +1,106 @@
+{
+  "university_id": "kyunghee",
+  "name": "경희대학교",
+  "name_short": "경희대",
+  "location": "서울/경기",
+  "campus": "서울(인문)/국제(자연)",
+  "website": "https://admission.khu.ac.kr",
+  "year": 2026,
+  "admissions": {
+    "early": {
+      "types": [
+        {
+          "type_name": "학생부교과",
+          "sub_type": "지역균형",
+          "enrollment": 615,
+          "evaluation": {
+            "elements": [
+              { "name": "교과종합평가", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "인문: 국수영탐(사) 중 3개 합 6 / 자연: 국수영탐(과) 중 3개 합 6",
+            "humanities": { "subjects_count": 3, "grade_sum": 6 },
+            "natural_science": { "subjects_count": 3, "grade_sum": 6 }
+          },
+          "gpa_reflection": {
+            "subjects": "계열별 상이",
+            "method": "상위 10개 등급 반영"
+          }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "네오르네상스",
+          "enrollment": 1068,
+          "evaluation": {
+            "elements": [
+              { "name": "서류", "ratio": 50 },
+              { "name": "면접", "ratio": 50 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "2026년 신규 적용 (전년도 미적용)",
+            "medical": { "description": "의약계열: 국영수탐(2) 중 3개 합 4 + 한국사 5등급" }
+          }
+        },
+        {
+          "type_name": "논술",
+          "sub_type": "논술우수자",
+          "enrollment": 474,
+          "evaluation": {
+            "elements": [
+              { "name": "논술", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "인문/자연 계열별 상이"
+          }
+        }
+      ]
+    },
+    "regular": {
+      "total": 2153,
+      "group": "가",
+      "csat_reflection": {
+        "by_track": {
+          "humanities_a": {
+            "departments": "문과대·외국어대·생활과학대(식품영양 제외)",
+            "korean": 40,
+            "math": 25,
+            "explore": 35
+          },
+          "humanities_b": {
+            "departments": "자율전공·정경대·경영대·국제대·호텔관광대·지리학(인문)·한의예(인문)",
+            "korean": 35,
+            "math": 35,
+            "explore": 30
+          },
+          "natural_science": {
+            "departments": "자연계열 전체",
+            "korean": 25,
+            "math": 40,
+            "explore": 35
+          }
+        },
+        "english_method": "감점방식 (2026년 변경: 기존 15% 반영 → 감점제)",
+        "explore_count": 2
+      },
+      "gpa_reflection": {
+        "applied": false,
+        "method": "수능 100%"
+      }
+    }
+  },
+  "key_changes_2026": [
+    "영어 반영방법 변경: 15% 비율반영 → 감점방식",
+    "정시 모집인원 7명 감소 (2160→2153)"
+  ],
+  "data_source": {
+    "url": "https://admission.khu.ac.kr",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 경희대학교 모집요강"
+  }
+}

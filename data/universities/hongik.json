@@ -1,0 +1,89 @@
+{
+  "university_id": "hongik",
+  "name": "홍익대학교",
+  "name_short": "홍익대",
+  "location": "서울",
+  "campus": "서울(마포)/세종",
+  "website": "https://admission.hongik.ac.kr",
+  "year": 2026,
+  "admissions": {
+    "early": {
+      "types": [
+        {
+          "type_name": "학생부교과",
+          "sub_type": "학교장추천",
+          "enrollment": 313,
+          "evaluation": {
+            "elements": [
+              { "name": "교과", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국수영탐 중 3개 합 7 (선택과목 지정 없음)",
+            "subjects_count": 3,
+            "grade_sum": 7
+          }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "학생부종합전형",
+          "enrollment": 412,
+          "evaluation": {
+            "elements": [
+              { "name": "서류평가", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": { "required": false }
+        },
+        {
+          "type_name": "논술",
+          "sub_type": "논술전형",
+          "enrollment": 305,
+          "evaluation": {
+            "elements": [
+              { "name": "논술", "ratio": 90 },
+              { "name": "학생부", "ratio": 10 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국수영탐 중 3개 합 7"
+          }
+        },
+        {
+          "type_name": "실기",
+          "sub_type": "실기/실적 (미대)",
+          "enrollment": 360,
+          "evaluation": {
+            "elements": [
+              { "name": "실기", "ratio": 60 },
+              { "name": "학생부", "ratio": 40 }
+            ]
+          },
+          "notes": "홍익대 미대는 국내 최고 수준, 실기전형 비중 높음"
+        }
+      ]
+    },
+    "regular": {
+      "total": 900,
+      "group": "가/나",
+      "csat_reflection": {
+        "by_track": {
+          "humanities": { "korean": 30, "math": 25, "english": 20, "explore": 25 },
+          "natural_science": { "korean": 25, "math": 30, "english": 20, "explore": 25 },
+          "art_design": { "korean": 30, "math": 20, "english": 20, "explore": 10, "practical": 20 }
+        },
+        "english_method": "등급별 환산점수 (비율 반영)",
+        "explore_count": 2
+      },
+      "gpa_reflection": { "applied": false, "method": "수능 100%" }
+    }
+  },
+  "special_notes": "미술대학(디자인/미술)이 강점, 실기전형 비중이 타 대학 대비 높음",
+  "data_source": {
+    "url": "https://admission.hongik.ac.kr",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 홍익대학교 모집요강"
+  }
+}

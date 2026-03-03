@@ -1,0 +1,89 @@
+{
+  "university_id": "skku",
+  "name": "성균관대학교",
+  "name_short": "성균관대",
+  "location": "서울/경기",
+  "campus": "인문사회(서울), 자연과학(수원)",
+  "website": "https://admission.skku.edu",
+  "year": 2026,
+  "admissions": {
+    "early": {
+      "types": [
+        {
+          "type_name": "학생부종합",
+          "sub_type": "융합형",
+          "enrollment": 315,
+          "evaluation": {
+            "elements": [
+              { "name": "서류평가", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": { "required": false }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "탐구형",
+          "enrollment": 406,
+          "evaluation": {
+            "elements": [
+              { "name": "서류평가", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": { "required": false }
+        },
+        {
+          "type_name": "학생부교과",
+          "sub_type": "학교장추천",
+          "enrollment": 416,
+          "evaluation": {
+            "elements": [
+              { "name": "정량평가+정성평가", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국영수탐 중 3개 등급 합 6"
+          }
+        },
+        {
+          "type_name": "논술",
+          "sub_type": "논술위주",
+          "enrollment": 386,
+          "evaluation": {
+            "elements": [
+              { "name": "논술", "ratio": 80 },
+              { "name": "학생부", "ratio": 20 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "국영수탐 중 3개 등급 합 5"
+          }
+        }
+      ]
+    },
+    "regular": {
+      "total": 1628,
+      "group": "가/나/다",
+      "group_detail": {
+        "ga": 686,
+        "na": 824,
+        "da": 118
+      },
+      "csat_reflection": {
+        "method": "유형A/유형B 중 높은 성적 선택 반영",
+        "english_method": "등급별 환산",
+        "notes": "한국사 7~9등급 시 감점 폭 매우 큼"
+      },
+      "gpa_reflection": {
+        "applied": false,
+        "method": "수능 100%"
+      }
+    }
+  },
+  "data_source": {
+    "url": "https://admission.skku.edu",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 성균관대학교 모집요강"
+  }
+}

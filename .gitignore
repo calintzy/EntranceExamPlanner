@@ -1,0 +1,49 @@
+# 의존성
+node_modules/
+
+# Next.js 빌드
+web/.next/
+web/out/
+web/build/
+
+# 환경 변수
+.env*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# 디버그 로그
+npm-debug.log*
+yarn-debug.log*
+
+# Vercel
+.vercel
+
+# TypeScript
+*.tsbuildinfo
+next-env.d.ts
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+
+# omc 내부 상태 (플러그인 세션 등)
+.omc/
+.bkit/
+
+# bkit/pdca 상태 파일
+docs/.bkit-memory.json
+docs/.pdca-snapshots/
+docs/.pdca-status.json
+
+# Claude 로컬 설정
+.claude/
+
+# 패키지 락 파일 (mono repo에서는 루트가 아닌 하위 디렉토리)
+web/package-lock.json

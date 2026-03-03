@@ -1,0 +1,235 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "대학 입시정보 스키마 (2026학년도)",
+  "description": "인서울 주요대학 및 의대 입시 데이터 구조",
+  "type": "object",
+  "properties": {
+    "university_id": {
+      "type": "string",
+      "description": "대학 고유 식별자 (예: seoul_nat, yonsei, korea)"
+    },
+    "name": {
+      "type": "string",
+      "description": "대학교 정식 명칭"
+    },
+    "name_short": {
+      "type": "string",
+      "description": "약칭 (예: 서울대, 연대, 고대)"
+    },
+    "location": {
+      "type": "string",
+      "description": "소재지 (서울, 경기 등)"
+    },
+    "campus": {
+      "type": "string",
+      "description": "캠퍼스 (본교, 미래캠퍼스 등)"
+    },
+    "website": {
+      "type": "string",
+      "description": "입학처 URL"
+    },
+    "year": {
+      "type": "integer",
+      "description": "학년도 (2026)"
+    },
+    "total_enrollment": {
+      "type": "integer",
+      "description": "총 모집인원"
+    },
+    "admissions": {
+      "type": "object",
+      "description": "전형별 모집 정보",
+      "properties": {
+        "early": {
+          "type": "object",
+          "description": "수시모집",
+          "properties": {
+            "total": { "type": "integer", "description": "수시 총 모집인원" },
+            "types": {
+              "type": "array",
+              "items": {
+                "type": "object",
+                "properties": {
+                  "type_name": {
+                    "type": "string",
+                    "description": "전형 유형 (학생부교과, 학생부종합, 논술, 실기 등)"
+                  },
+                  "sub_type": {
+                    "type": "string",
+                    "description": "세부 전형명 (지역균형, 일반, 추천형 등)"
+                  },
+                  "enrollment": { "type": "integer", "description": "모집인원" },
+                  "evaluation": {
+                    "type": "object",
+                    "description": "평가 방법",
+                    "properties": {
+                      "elements": {
+                        "type": "array",
+                        "description": "전형요소 (서류, 면접, 교과 등)",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "name": { "type": "string" },
+                            "ratio": { "type": "number", "description": "반영비율 (%)" }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "csat_minimum": {
+                    "type": "object",
+                    "description": "수능 최저학력기준",
+                    "properties": {
+                      "required": { "type": "boolean" },
+                      "description": { "type": "string", "description": "최저기준 설명 (예: 3개 합 5)" },
+                      "subjects_count": { "type": "integer", "description": "반영 영역 수" },
+                      "grade_sum": { "type": "integer", "description": "등급합" },
+                      "korean_required": { "type": "boolean" },
+                      "math_required": { "type": "boolean" },
+                      "english_required": { "type": "boolean" },
+                      "explore_required": { "type": "boolean" },
+                      "english_grade": { "type": "integer", "description": "영어 필수 등급" }
+                    }
+                  },
+                  "gpa_reflection": {
+                    "type": "object",
+                    "description": "내신 반영 방법",
+                    "properties": {
+                      "subjects": {
+                        "type": "string",
+                        "description": "반영 교과 (국영수과, 전과목 등)"
+                      },
+                      "method": {
+                        "type": "string",
+                        "description": "산출 방법 (석차등급, 성취도, 원점수 등)"
+                      },
+                      "grade_weight_by_year": {
+                        "type": "object",
+                        "description": "학년별 반영비율",
+                        "properties": {
+                          "year1": { "type": "number" },
+                          "year2": { "type": "number" },
+                          "year3": { "type": "number" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "regular": {
+          "type": "object",
+          "description": "정시모집",
+          "properties": {
+            "total": { "type": "integer", "description": "정시 총 모집인원" },
+            "group": {
+              "type": "string",
+              "description": "모집 군 (가, 나, 다)"
+            },
+            "csat_reflection": {
+              "type": "object",
+              "description": "수능 반영비율",
+              "properties": {
+                "korean": { "type": "number", "description": "국어 반영비율 (%)" },
+                "math": { "type": "number", "description": "수학 반영비율 (%)" },
+                "english": { "type": "number", "description": "영어 반영비율 (%)" },
+                "explore": { "type": "number", "description": "탐구 반영비율 (%)" },
+                "history": { "type": "number", "description": "한국사 반영비율 (%)" },
+                "english_method": {
+                  "type": "string",
+                  "description": "영어 반영 방법 (감점, 가산점, 등급별 환산)"
+                },
+                "explore_count": {
+                  "type": "integer",
+                  "description": "탐구 반영 과목 수"
+                },
+                "math_bonus": {
+                  "type": "object",
+                  "description": "수학 선택과목 가산점",
+                  "properties": {
+                    "calculus": { "type": "number", "description": "미적분 가산점 (%)" },
+                    "geometry": { "type": "number", "description": "기하 가산점 (%)" }
+                  }
+                },
+                "science_bonus": {
+                  "type": "number",
+                  "description": "과탐 선택 시 가산점 (%)"
+                }
+              }
+            },
+            "gpa_reflection": {
+              "type": "object",
+              "description": "정시 학생부 반영",
+              "properties": {
+                "applied": { "type": "boolean" },
+                "ratio": { "type": "number", "description": "반영비율 (%)" },
+                "method": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "required_courses": {
+      "type": "object",
+      "description": "교과이수 조건",
+      "properties": {
+        "has_requirements": { "type": "boolean" },
+        "mandatory": {
+          "type": "array",
+          "description": "필수 이수 과목",
+          "items": {
+            "type": "object",
+            "properties": {
+              "department": { "type": "string", "description": "해당 학과/모집단위" },
+              "subjects": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        },
+        "recommended": {
+          "type": "array",
+          "description": "권장 과목",
+          "items": {
+            "type": "object",
+            "properties": {
+              "department": { "type": "string" },
+              "subjects": {
+                "type": "array",
+                "items": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "record_evaluation": {
+      "type": "object",
+      "description": "생활기록부 평가 기준 (학종)",
+      "properties": {
+        "academic_ability": { "type": "string", "description": "학업역량 평가 방법" },
+        "major_relevance": { "type": "string", "description": "전공적합성 평가 방법" },
+        "personal_qualities": { "type": "string", "description": "인성/공동체역량 평가 방법" },
+        "growth_potential": { "type": "string", "description": "발전가능성 평가 방법" },
+        "key_items": {
+          "type": "array",
+          "description": "주요 평가 항목",
+          "items": { "type": "string" }
+        }
+      }
+    },
+    "data_source": {
+      "type": "object",
+      "properties": {
+        "url": { "type": "string" },
+        "retrieved_date": { "type": "string", "format": "date" },
+        "document_name": { "type": "string" }
+      }
+    }
+  },
+  "required": ["university_id", "name", "year", "admissions"]
+}

@@ -1,0 +1,162 @@
+{
+  "university_id": "yonsei",
+  "name": "연세대학교",
+  "name_short": "연세대",
+  "location": "서울",
+  "campus": "신촌",
+  "website": "https://admission.yonsei.ac.kr",
+  "year": 2026,
+  "total_enrollment": 3611,
+  "admissions": {
+    "early": {
+      "total": 2137,
+      "types": [
+        {
+          "type_name": "학생부교과",
+          "sub_type": "추천형",
+          "enrollment": 529,
+          "evaluation": {
+            "elements": [
+              { "name": "교과", "ratio": 80 },
+              { "name": "수능", "ratio": 20 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "인문: 국수탐(2) 중 국/수 포함 2개 합 4 + 영어3 + 한국사4 / 자연: 국수(미적/기하)탐(2) 중 수학 포함 2개 합 5 + 영어3 + 한국사4",
+            "humanities": { "subjects_count": 2, "grade_sum": 4, "must_include": "국어 또는 수학", "english_grade": 3, "history_grade": 4 },
+            "natural_science": { "subjects_count": 2, "grade_sum": 5, "must_include": "수학(미적분/기하)", "english_grade": 3, "history_grade": 4 },
+            "medical": { "description": "국수(미적/기하)탐(2) 중 국/수 포함 2개 이상 1등급 + 영어3 + 한국사4" }
+          },
+          "gpa_reflection": {
+            "subjects": "국어, 영어, 수학, 사회, 과학",
+            "method": "석차등급 기반",
+            "top_subjects": "상위 과목 반영"
+          },
+          "notes": "고등학교장 추천 최대 10명"
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "활동우수형",
+          "enrollment": 729,
+          "evaluation": {
+            "elements": [
+              { "name": "1단계: 서류", "ratio": 100 },
+              { "name": "2단계: 서류", "ratio": 40 },
+              { "name": "2단계: 면접", "ratio": 60 }
+            ]
+          },
+          "csat_minimum": {
+            "required": true,
+            "description": "인문: 국수탐(2) 중 국/수 포함 2개 합 4 + 영어3 + 한국사4 / 자연: 국수(미적/기하)탐(2) 중 수학 포함 2개 합 5 + 영어3 + 한국사4",
+            "humanities": { "subjects_count": 2, "grade_sum": 4, "must_include": "국어 또는 수학", "english_grade": 3, "history_grade": 4 },
+            "natural_science": { "subjects_count": 2, "grade_sum": 5, "must_include": "수학(미적분/기하)", "english_grade": 3, "history_grade": 4 },
+            "medical": { "description": "국수(미적/기하)탐(2) 중 국/수 포함 2개 이상 1등급 + 영어3 + 한국사4" }
+          },
+          "gpa_reflection": {
+            "subjects": "전과목",
+            "method": "정성평가"
+          }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "국제형",
+          "enrollment": 255,
+          "evaluation": {
+            "elements": [
+              { "name": "1단계: 서류", "ratio": 100 },
+              { "name": "2단계: 서류+면접", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": false
+          }
+        },
+        {
+          "type_name": "학생부종합",
+          "sub_type": "기회균형",
+          "enrollment": 191,
+          "evaluation": {
+            "elements": [
+              { "name": "서류", "ratio": 100 }
+            ]
+          },
+          "csat_minimum": {
+            "required": false
+          }
+        },
+        {
+          "type_name": "논술",
+          "sub_type": "논술전형",
+          "enrollment": 335,
+          "evaluation": {
+            "elements": [
+              { "name": "논술", "ratio": 70 },
+              { "name": "학생부", "ratio": 30 }
+            ]
+          },
+          "csat_minimum": {
+            "required": false,
+            "description": "수능최저 없음 - 접근성 높음"
+          }
+        }
+      ]
+    },
+    "regular": {
+      "total": 1507,
+      "group": "가",
+      "types": [
+        {
+          "sub_type": "일반전형 (일반계열)",
+          "enrollment": 1320,
+          "evaluation": {
+            "elements": [
+              { "name": "수능", "ratio": 95 },
+              { "name": "학생부(교과)", "ratio": 5 }
+            ]
+          },
+          "notes": "1단계: 수능900점+학생부50점 → 2단계: 1단계점수+면접50점"
+        },
+        {
+          "sub_type": "체능계열",
+          "enrollment": 51
+        },
+        {
+          "sub_type": "국제계열",
+          "enrollment": 48
+        },
+        {
+          "sub_type": "예능계열 (실기/실적)",
+          "enrollment": 120
+        }
+      ],
+      "csat_reflection": {
+        "korean": 21.1,
+        "math": 21.1,
+        "english": 5.3,
+        "explore": 52.6,
+        "raw_scores": { "korean": 200, "math": 200, "english": 50, "explore": 500, "total": 950 },
+        "history": 0,
+        "english_method": "등급제 (1등급 50점 만점)",
+        "explore_count": 2,
+        "math_bonus": null,
+        "science_bonus": null,
+        "notes": "국어200+수학200+영어50+탐구500 = 950점, 학생부50점 별도"
+      },
+      "gpa_reflection": {
+        "applied": true,
+        "ratio": 5,
+        "method": "교과 중심 정량평가 (교과이수, 출결)"
+      }
+    }
+  },
+  "required_courses": {
+    "has_requirements": true,
+    "description": "2026학년도부터 전공 연계 권장과목 제시 (서울대, 고려대, 중앙대와 함께 4개교)"
+  },
+  "data_source": {
+    "url": "https://admission.yonsei.ac.kr",
+    "retrieved_date": "2026-02-18",
+    "document_name": "2026학년도 연세대학교 수시/정시 모집요강"
+  }
+}
