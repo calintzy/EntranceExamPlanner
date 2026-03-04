@@ -2,8 +2,18 @@
 // 출처: 각 대학 입학처 2026학년도 모집요강 및 전공연계 교과이수 안내자료
 // 참고: ipsihogu.com 검색기를 통해 수집 후, 원본 모집요강과 교차검증
 // 최종 수정일: 2026-03-03
+//
+// NOTE: 이 파일은 "use client" 호환을 위해 하드코딩 데이터를 유지합니다.
+// SSG 전환(Task #7) 후에는 data-loader.ts에서 JSON을 로드하고
+// 이 파일의 데이터는 제거됩니다.
 
 import { CourseRecommendationData } from "./types";
+import { categorizeSubject } from "./subject";
+import {
+  getDepartments as _getDepartments,
+  getCourseRecommendation as _getCourseRecommendation,
+  compareUniversities as _compareUniversities,
+} from "./course-utils";
 
 export const courseData: CourseRecommendationData = {
   "서울대": {
@@ -198,53 +208,26 @@ export const courseData: CourseRecommendationData = {
   },
 };
 
-// 대학 목록
+// === 하위 호환 API (guide/page.tsx에서 사용 중) ===
+// SSG 전환(Task #7) 후 이 래퍼들은 제거되고
+// 컴포넌트가 직접 course-utils.ts 함수를 사용하게 됩니다.
+
 export const universities = Object.keys(courseData);
 
-// 대학별 학과 목록
 export function getDepartments(university: string): string[] {
-  return Object.keys(courseData[university] || {});
+  return _getDepartments(courseData, university);
 }
 
-// 학과별 권장과목 조회
-export function getCourseRecommendation(university: string, department: string) {
-  const data = courseData[university]?.[department];
-  if (!data) return null;
-
-  const coreList = data.core.split(",").map(s => s.trim()).filter(Boolean);
-  const recommendedList = data.recommended.split(",").map(s => s.trim()).filter(Boolean);
-
-  return { core: coreList, recommended: recommendedList };
+export function getCourseRecommendation(
+  university: string,
+  department: string
+) {
+  return _getCourseRecommendation(courseData, university, department);
 }
 
-// 과목별 카테고리 분류
-export function categorizeSubject(subject: string): string {
-  if (subject.includes("수학") || subject.includes("미적분") || subject.includes("기하") || subject.includes("확률") || subject.includes("인공지능수학")) return "수학";
-  if (subject.includes("물리")) return "과학";
-  if (subject.includes("화학")) return "과학";
-  if (subject.includes("생명과학")) return "과학";
-  if (subject.includes("지구과학")) return "과학";
-  if (subject.includes("지리") || subject.includes("여행")) return "사회";
-  return "기타";
-}
-
-// 여러 대학 동시 비교
 export function compareUniversities(department: string) {
-  const results: { university: string; core: string[]; recommended: string[] }[] = [];
-
-  for (const univ of universities) {
-    const depts = getDepartments(univ);
-    // 유사한 학과명 매칭
-    const match = depts.find(d =>
-      d.includes(department) || department.includes(d.replace(/학과|학부|전공|계열/g, ""))
-    );
-    if (match) {
-      const rec = getCourseRecommendation(univ, match);
-      if (rec) {
-        results.push({ university: univ, ...rec });
-      }
-    }
-  }
-
-  return results;
+  return _compareUniversities(courseData, department);
 }
+
+// categorizeSubject는 subject.ts에서 직접 re-export
+export { categorizeSubject } from "./subject";
