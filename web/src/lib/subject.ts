@@ -9,13 +9,23 @@ const NORMALIZATION_MAP: Record<string, string> = {
   "인공지능 수학": "인공지능수학",
 };
 
-// 과목명 정규화: 띄어쓰기 차이 통일, 앞뒤 공백 제거
+// ASCII 문자 → 로마숫자/특수문자 정규화
+// 데이터에 "화학I" (ASCII I) vs "화학Ⅰ" (로마숫자) 혼재
+const CHAR_NORMALIZATION: [RegExp, string][] = [
+  [/(?<=화학|물리학|생명과학|지구과학|수학)I(?!I)/g, "Ⅰ"],
+  [/(?<=화학|물리학|생명과학|지구과학|수학)II/g, "Ⅱ"],
+];
+
+// 과목명 정규화: 띄어쓰기 차이 통일, ASCII→로마숫자, 앞뒤 공백 제거
 export function normalizeSubject(name: string): string {
   let normalized = name.trim();
   for (const [from, to] of Object.entries(NORMALIZATION_MAP)) {
     if (normalized.includes(from)) {
       normalized = normalized.replace(from, to);
     }
+  }
+  for (const [pattern, replacement] of CHAR_NORMALIZATION) {
+    normalized = normalized.replace(pattern, replacement);
   }
   return normalized;
 }

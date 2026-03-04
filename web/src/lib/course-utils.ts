@@ -109,3 +109,18 @@ export function searchBySubject(
 
   return results;
 }
+
+// 전체 고유 과목 목록 추출 (정규화 적용, 정렬)
+// generateStaticParams() 및 검색 UI에서 사용
+export function getAllSubjects(data: CourseRecommendationData): string[] {
+  const subjects = new Set<string>();
+
+  for (const depts of Object.values(data)) {
+    for (const courses of Object.values(depts)) {
+      for (const s of parseSubjects(courses.core)) subjects.add(s);
+      for (const s of parseSubjects(courses.recommended)) subjects.add(s);
+    }
+  }
+
+  return Array.from(subjects).sort();
+}
