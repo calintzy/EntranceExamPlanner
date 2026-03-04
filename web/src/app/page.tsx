@@ -1,12 +1,32 @@
 import Link from "next/link";
+import { courseData } from "@/lib/course-data";
+import { getUniversityList } from "@/lib/course-utils";
+import universityMeta from "@/lib/university_meta.json";
+
+const universities = getUniversityList(courseData);
+const totalDepts = Object.values(courseData).reduce(
+  (sum, depts) => sum + Object.keys(depts).length,
+  0
+);
+
+// 권역별 대학 그룹
+type MetaEntry = { year: number; region?: string; location?: string; source: string };
+const meta = universityMeta as Record<string, MetaEntry>;
+const regionGroups: Record<string, string[]> = {};
+for (const name of universities) {
+  const m = meta[name];
+  const region = m?.region ?? "주요 대학";
+  if (!regionGroups[region]) regionGroups[region] = [];
+  regionGroups[region].push(name);
+}
+const regionOrder = ["주요 대학", "수도권", "중부권", "영남권", "호남권"];
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
   name: "입시플래너",
   url: "https://web-kappa-sable-82.vercel.app",
-  description:
-    "서울대, 연세대, 고려대 등 주요 대학의 전공연계 핵심권장과목과 권장과목을 한눈에 비교하세요.",
+  description: `${universities.length}개 대학의 전공연계 핵심권장과목과 권장과목을 한눈에 비교하세요.`,
   potentialAction: {
     "@type": "SearchAction",
     target: "https://web-kappa-sable-82.vercel.app/search",
@@ -28,7 +48,7 @@ export default function Home() {
             입시플래너
           </h1>
           <span className="text-xs text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded">
-            2026학년도
+            2026·2028학년도
           </span>
         </div>
       </header>
@@ -37,14 +57,14 @@ export default function Home() {
       <main className="max-w-5xl mx-auto px-6">
         <section className="py-20 text-center">
           <div className="inline-block mb-4 px-3 py-1 text-sm font-medium text-blue-700 bg-blue-100 dark:text-blue-300 dark:bg-blue-900/40 rounded-full">
-            베타 서비스
+            {universities.length}개 대학 · {totalDepts}개 학과
           </div>
           <h2 className="text-4xl md:text-5xl font-bold text-slate-900 dark:text-white leading-tight mb-6">
             목표 대학에 맞는<br />
             <span className="text-blue-600 dark:text-blue-400">교과 선택</span>을 안내합니다
           </h2>
           <p className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto mb-10">
-            서울대, 연세대, 고려대 등 주요 6개 대학의 전공연계 핵심권장과목과 권장과목을 한눈에 비교하세요. 고1부터 시작하는 전략적 교과 선택이 합격의 첫걸음입니다.
+            전국 {universities.length}개 대학의 전공연계 핵심권장과목과 권장과목을 한눈에 비교하세요. 고1부터 시작하는 전략적 교과 선택이 합격의 첫걸음입니다.
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -94,50 +114,57 @@ export default function Home() {
               대학간 비교
             </h3>
             <p className="text-slate-600 dark:text-slate-400 text-sm">
-              같은 학과라도 대학마다 다른 권장과목. 6개 대학을 한눈에 비교합니다.
+              같은 학과라도 대학마다 다른 권장과목. {universities.length}개 대학을 한눈에 비교합니다.
             </p>
           </div>
 
           <div className="bg-white dark:bg-slate-900 rounded-2xl p-6 shadow-sm border border-slate-200 dark:border-slate-800">
             <div className="w-12 h-12 rounded-xl bg-amber-100 dark:bg-amber-900/40 flex items-center justify-center mb-4">
               <svg className="w-6 h-6 text-amber-600 dark:text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
               </svg>
             </div>
             <h3 className="text-lg font-semibold text-slate-900 dark:text-white mb-2">
-              입시 전형 정보
+              역방향 검색
             </h3>
             <p className="text-slate-600 dark:text-slate-400 text-sm">
-              수시/정시 전형별 모집인원, 수능 최저, 반영비율 등 핵심 정보를 제공합니다.
+              내가 선택한 과목으로 어떤 대학·학과에 유리한지 역방향으로 검색할 수 있습니다.
             </p>
           </div>
         </section>
 
-        {/* 대학 목록 */}
+        {/* 대학 목록 (권역별) */}
         <section className="pb-20">
-          <h3 className="text-center text-sm font-medium text-slate-500 dark:text-slate-400 mb-6">
-            현재 지원하는 대학
+          <h3 className="text-center text-sm font-medium text-slate-500 dark:text-slate-400 mb-8">
+            지원 대학 ({universities.length}개교)
           </h3>
-          <div className="flex flex-wrap justify-center gap-3">
-            {["서울대", "연세대", "고려대", "성균관대", "경희대", "중앙대"].map((name) => (
-              <span
-                key={name}
-                className="px-4 py-2 text-sm font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 rounded-full border border-slate-200 dark:border-slate-700"
-              >
-                {name}
-              </span>
+          <div className="space-y-6">
+            {regionOrder.filter((r) => regionGroups[r]).map((region) => (
+              <div key={region}>
+                <h4 className="text-xs font-semibold text-slate-400 dark:text-slate-500 uppercase tracking-wider mb-3 text-center">
+                  {region}
+                </h4>
+                <div className="flex flex-wrap justify-center gap-2">
+                  {regionGroups[region].map((name) => (
+                    <Link
+                      key={name}
+                      href={`/university/${encodeURIComponent(name)}`}
+                      className="px-3 py-1.5 text-sm font-medium text-slate-700 dark:text-slate-300 bg-white dark:bg-slate-900 rounded-full border border-slate-200 dark:border-slate-700 hover:border-blue-300 dark:hover:border-blue-600 hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                    >
+                      {name}
+                    </Link>
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
-          <p className="text-center text-xs text-slate-400 mt-4">
-            한양대, 서강대, 이화여대, 건국대, 동국대 등 추가 예정
-          </p>
         </section>
       </main>
 
       {/* 푸터 */}
       <footer className="border-t border-slate-200 dark:border-slate-800 py-8">
         <div className="max-w-5xl mx-auto px-6 text-center text-xs text-slate-400 space-y-2">
-          <p>2026학년도 입시 기준 | 데이터 출처: 각 대학 입학처 모집요강 및 전공연계 교과이수 안내자료</p>
+          <p>2026·2028학년도 입시 기준 | 데이터 출처: 각 대학 입학처 모집요강 및 adiga.kr 대입정보포털</p>
           <p>본 서비스는 참고용 정보를 제공하며, 대학 입학 전형의 공식 기준이 아닙니다.</p>
           <p>정확한 권장과목 및 입시 정보는 반드시 각 대학 입학처 공식 자료를 통해 확인하시기 바랍니다.</p>
         </div>

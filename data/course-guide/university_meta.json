@@ -1,0 +1,284 @@
+{
+  "경희대": {
+    "year": 2026,
+    "source": "각 대학 입학처"
+  },
+  "고려대": {
+    "year": 2026,
+    "source": "각 대학 입학처"
+  },
+  "서울대": {
+    "year": 2026,
+    "source": "각 대학 입학처"
+  },
+  "성균관대": {
+    "year": 2026,
+    "source": "각 대학 입학처"
+  },
+  "연세대": {
+    "year": 2026,
+    "source": "각 대학 입학처"
+  },
+  "중앙대": {
+    "year": 2026,
+    "source": "각 대학 입학처"
+  },
+  "가톨릭대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "서울",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "건국대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "서울",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "광운대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "서울",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "국민대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "서울",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "덕성여대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "서울",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "동국대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "서울",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "서울과기대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "서울",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "서울시립대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "서울",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "숭실대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "서울",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "한국체대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "서울",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "한양대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "서울",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "인하대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "인천",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "경기대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "경기",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "단국대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "경기",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "성결대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "경기",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "아주대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "경기",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "한국항공대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "경기",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "한양대(ERICA)": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "경기",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "협성대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "경기",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "경성대학교": {
+    "year": 2028,
+    "region": "영남권",
+    "location": "부산",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "동아대": {
+    "year": 2028,
+    "region": "영남권",
+    "location": "부산",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "부산대": {
+    "year": 2028,
+    "region": "영남권",
+    "location": "부산",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "경북대": {
+    "year": 2028,
+    "region": "영남권",
+    "location": "대구",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "영남대": {
+    "year": 2028,
+    "region": "영남권",
+    "location": "경북",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "POSTECH": {
+    "year": 2028,
+    "region": "영남권",
+    "location": "경북",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "진주교육대": {
+    "year": 2028,
+    "region": "영남권",
+    "location": "경남",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "국립한밭대": {
+    "year": 2028,
+    "region": "중부권",
+    "location": "대전",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "대전가톨릭대": {
+    "year": 2028,
+    "region": "중부권",
+    "location": "대전",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "충남대": {
+    "year": 2028,
+    "region": "중부권",
+    "location": "대전",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "강원대(춘천)": {
+    "year": 2028,
+    "region": "중부권",
+    "location": "강원",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "강원대(삼척·도계)": {
+    "year": 2028,
+    "region": "중부권",
+    "location": "강원",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "한라대": {
+    "year": 2028,
+    "region": "중부권",
+    "location": "강원",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "건국대(글로컬)": {
+    "year": 2028,
+    "region": "중부권",
+    "location": "충북",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "충북대": {
+    "year": 2028,
+    "region": "중부권",
+    "location": "충북",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "단국대(천안)": {
+    "year": 2028,
+    "region": "중부권",
+    "location": "충남",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "한국기술교육대": {
+    "year": 2028,
+    "region": "중부권",
+    "location": "충남",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "광주교육대": {
+    "year": 2028,
+    "region": "호남권",
+    "location": "광주",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "전남대(광주)": {
+    "year": 2028,
+    "region": "호남권",
+    "location": "광주",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "조선대": {
+    "year": 2028,
+    "region": "호남권",
+    "location": "광주",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "원광대": {
+    "year": 2028,
+    "region": "호남권",
+    "location": "전북",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "전북대": {
+    "year": 2028,
+    "region": "호남권",
+    "location": "전북",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "전주대": {
+    "year": 2028,
+    "region": "호남권",
+    "location": "전북",
+    "source": "adiga.kr 대입정보포털"
+  },
+  "전남대(여수)": {
+    "year": 2028,
+    "region": "호남권",
+    "location": "전남",
+    "source": "adiga.kr 대입정보포털"
+  }
+}

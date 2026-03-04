@@ -115,7 +115,7 @@ export default async function Image({ params }: { params: Promise<{ name: string
             color: "#64748b",
           }}
         >
-          {`2026학년도 기준`}
+          {`2026·2028학년도 기준`}
         </div>
       </div>
     ),

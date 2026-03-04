@@ -82,7 +82,9 @@ export function categorizeSubject(subject: string): string {
     normalized.includes("미적분") ||
     normalized.includes("기하") ||
     normalized.includes("확률") ||
-    normalized.includes("인공지능수학")
+    normalized.includes("인공지능수학") ||
+    normalized.includes("대수") ||
+    normalized === "경제수학"
   ) {
     return "수학";
   }
@@ -90,7 +92,11 @@ export function categorizeSubject(subject: string): string {
   if (normalized.includes("화학")) return "과학";
   if (normalized.includes("생명과학")) return "과학";
   if (normalized.includes("지구과학")) return "과학";
+  if (normalized.includes("생태") || normalized.includes("환경")) return "과학";
   if (normalized.includes("지리") || normalized.includes("여행")) return "사회";
+  if (normalized.includes("사회") || normalized.includes("경제") || normalized.includes("윤리") || normalized.includes("국제")) return "사회";
+  if (normalized.includes("국어") || normalized.includes("화법") || normalized.includes("독서") || normalized.includes("영어")) return "언어";
+  if (normalized.includes("정보")) return "정보";
   return "기타";
 }
 

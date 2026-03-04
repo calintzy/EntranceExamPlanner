@@ -20,7 +20,7 @@ export const metadata: Metadata = {
     template: "%s | 입시플래너",
   },
   description:
-    "서울대, 연세대, 고려대 등 주요 대학의 전공연계 핵심권장과목과 권장과목을 한눈에 비교하세요. 내가 선택한 과목으로 유리한 대학을 역방향 검색할 수 있습니다.",
+    "전국 49개 대학의 전공연계 핵심권장과목과 권장과목을 한눈에 비교하세요. 내가 선택한 과목으로 유리한 대학을 역방향 검색할 수 있습니다.",
   metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: "/",
@@ -29,16 +29,16 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ko_KR",
     siteName: "입시플래너",
-    title: "입시플래너 - 대학별 권장과목 비교 & 역방향 검색",
+    title: "입시플래너 - 49개 대학 권장과목 비교 & 역방향 검색",
     description:
-      "서울대, 연세대, 고려대 등 주요 대학의 전공연계 핵심권장과목을 비교하고, 내 과목으로 유리한 대학을 찾아보세요.",
+      "전국 49개 대학의 전공연계 핵심권장과목을 비교하고, 내 과목으로 유리한 대학을 찾아보세요.",
     url: BASE_URL,
   },
   twitter: {
     card: "summary_large_image",
     title: "입시플래너 - 대학별 권장과목 비교",
     description:
-      "2026학년도 대학별 전공연계 권장과목 비교 및 역방향 검색 서비스",
+      "전국 49개 대학 전공연계 권장과목 비교 및 역방향 검색 서비스",
   },
   keywords: [
     "입시플래너",
@@ -52,6 +52,7 @@ export const metadata: Metadata = {
     "연세대 권장과목",
     "고려대 권장과목",
     "2026학년도 입시",
+    "2028학년도 입시",
     "역방향 검색",
   ],
   robots: {
