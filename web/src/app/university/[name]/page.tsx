@@ -58,6 +58,21 @@ export default async function UniversityPage({ params }: PageProps) {
         </div>
       </header>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "홈", item: "https://web-kappa-sable-82.vercel.app" },
+              { "@type": "ListItem", position: 2, name: "교과 선택 가이드", item: "https://web-kappa-sable-82.vercel.app/guide" },
+              { "@type": "ListItem", position: 3, name: `${univName} 권장과목` },
+            ],
+          }),
+        }}
+      />
+
       <main className="max-w-5xl mx-auto px-6 py-8">
         {/* 네비게이션 경로 */}
         <nav className="text-sm text-slate-500 mb-6">

@@ -1,8 +1,26 @@
 import Link from "next/link";
 
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  name: "입시플래너",
+  url: "https://web-kappa-sable-82.vercel.app",
+  description:
+    "서울대, 연세대, 고려대 등 주요 대학의 전공연계 핵심권장과목과 권장과목을 한눈에 비교하세요.",
+  potentialAction: {
+    "@type": "SearchAction",
+    target: "https://web-kappa-sable-82.vercel.app/search",
+    "query-input": "required name=search_term_string",
+  },
+};
+
 export default function Home() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-950 dark:to-slate-900">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* 헤더 */}
       <header className="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-sm">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">

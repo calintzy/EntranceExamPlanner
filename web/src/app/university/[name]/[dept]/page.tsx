@@ -94,6 +94,53 @@ export default async function DepartmentPage({ params }: PageProps) {
         </div>
       </header>
 
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BreadcrumbList",
+            itemListElement: [
+              { "@type": "ListItem", position: 1, name: "홈", item: "https://web-kappa-sable-82.vercel.app" },
+              { "@type": "ListItem", position: 2, name: "교과 선택 가이드", item: "https://web-kappa-sable-82.vercel.app/guide" },
+              { "@type": "ListItem", position: 3, name: univName, item: `https://web-kappa-sable-82.vercel.app/university/${encodeURIComponent(univName)}` },
+              { "@type": "ListItem", position: 4, name: `${deptName} 권장과목` },
+            ],
+          }),
+        }}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "FAQPage",
+            mainEntity: [
+              {
+                "@type": "Question",
+                name: `${univName} ${deptName}의 핵심권장과목은 무엇인가요?`,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: recommendation.core.length > 0
+                    ? `${univName} ${deptName}의 핵심권장과목은 ${recommendation.core.join(", ")}입니다.`
+                    : `${univName} ${deptName}은 별도의 핵심권장과목을 지정하지 않았습니다.`,
+                },
+              },
+              {
+                "@type": "Question",
+                name: `${univName} ${deptName}의 권장과목은 무엇인가요?`,
+                acceptedAnswer: {
+                  "@type": "Answer",
+                  text: recommendation.recommended.length > 0
+                    ? `${univName} ${deptName}의 권장과목은 ${recommendation.recommended.join(", ")}입니다.`
+                    : `${univName} ${deptName}은 별도의 권장과목을 지정하지 않았습니다.`,
+                },
+              },
+            ],
+          }),
+        }}
+      />
+
       <main className="max-w-5xl mx-auto px-6 py-8">
         {/* 네비게이션 경로 */}
         <nav className="text-sm text-slate-500 mb-6">
