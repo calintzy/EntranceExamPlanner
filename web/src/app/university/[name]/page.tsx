@@ -1,10 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { courseData } from "@/lib/course-data";
-import { getUniversityList, getDepartments } from "@/lib/course-utils";
+import { getUniversityList, getDepartments, getUniversityMeta, getDataLabel } from "@/lib/course-utils";
 import { notFound } from "next/navigation";
+import { YearBadge } from "@/components/year-badge";
+import { Footer } from "@/components/footer";
 
-// 6개 대학 정적 페이지 생성
+// 대학별 정적 페이지 생성
 export function generateStaticParams() {
   return getUniversityList(courseData).map((name) => ({ name }));
 }
@@ -20,9 +22,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   if (departments.length === 0) return {};
 
+  const yearLabel = getDataLabel(univName);
+
   return {
-    title: `${univName} 권장과목 - ${departments.length}개 학과 | 입시플래너`,
-    description: `${univName}의 ${departments.length}개 학과별 핵심권장과목과 권장과목을 확인하세요. ${departments.slice(0, 5).join(", ")} 등`,
+    title: `${univName} 권장과목 - ${departments.length}개 학과 (${yearLabel}) | 입시플래너`,
+    description: `${univName}의 ${departments.length}개 학과별 핵심권장과목과 권장과목을 확인하세요. ${departments.slice(0, 5).join(", ")} 등. ${yearLabel} 기준.`,
     openGraph: {
       title: `${univName} 학과별 권장과목`,
       description: `${univName} ${departments.length}개 학과의 교과 선택 가이드`,
@@ -37,24 +41,29 @@ export default async function UniversityPage({ params }: PageProps) {
 
   if (departments.length === 0) notFound();
 
+  const meta = getUniversityMeta(univName);
+
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-950 dark:to-slate-900">
-      <header className="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-sm sticky top-0 z-10">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-4">
           <Link
             href="/guide"
-            className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors"
+            className="text-slate-500 hover:text-slate-700 transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </Link>
-          <h1 className="text-lg font-bold text-slate-900 dark:text-white">
+          <h1 className="text-lg font-bold text-slate-900">
             {univName} 권장과목
           </h1>
-          <span className="text-xs text-slate-500 bg-slate-100 dark:bg-slate-800 px-2 py-1 rounded ml-auto">
-            {departments.length}개 학과
-          </span>
+          <div className="ml-auto flex items-center gap-2">
+            <span className="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded">
+              {departments.length}개 학과
+            </span>
+            <YearBadge university={univName} />
+          </div>
         </div>
       </header>
 
@@ -80,22 +89,34 @@ export default async function UniversityPage({ params }: PageProps) {
           <span className="mx-2">/</span>
           <Link href="/guide" className="hover:text-blue-600">교과 선택 가이드</Link>
           <span className="mx-2">/</span>
-          <span className="text-slate-900 dark:text-white font-medium">{univName}</span>
+          <span className="text-slate-900 font-medium">{univName}</span>
         </nav>
 
-        <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">
+        <h2 className="text-2xl font-bold text-slate-900 mb-2">
           {univName} 학과별 권장과목
         </h2>
+
+        {/* 정시 교과평가 안내 */}
+        {meta?.regularAdmission && (
+          <div className="bg-blue-50 border border-blue-200 rounded-xl p-4 mb-6">
+            <p className="text-sm text-blue-700">
+              <strong>정시 교과평가:</strong> {meta.regularAdmission.description}
+              {meta.regularAdmission.courseEvalRatio && (
+                <span className="ml-1">(반영 비율 {meta.regularAdmission.courseEvalRatio}%)</span>
+              )}
+            </p>
+          </div>
+        )}
 
         <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-3">
           {departments.map((dept) => (
             <Link
               key={dept}
               href={`/university/${encodeURIComponent(univName)}/${encodeURIComponent(dept)}`}
-              className="group bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-4 hover:border-blue-300 dark:hover:border-blue-700 hover:shadow-md transition-all"
+              className="group bg-white rounded-xl border border-slate-200 p-4 hover:border-blue-300 hover:shadow-md transition-all"
             >
               <div className="flex items-center justify-between">
-                <span className="text-sm font-medium text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400">
+                <span className="text-sm font-medium text-slate-900 group-hover:text-blue-600">
                   {dept}
                 </span>
                 <svg className="w-4 h-4 text-slate-400 group-hover:text-blue-500 transition-colors" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -107,13 +128,7 @@ export default async function UniversityPage({ params }: PageProps) {
         </div>
       </main>
 
-      <footer className="border-t border-slate-200 dark:border-slate-800 py-8 mt-12">
-        <div className="max-w-5xl mx-auto px-6 text-center text-xs text-slate-400 space-y-2">
-          <p>데이터 출처: 각 대학 입학처 모집요강 및 전공연계 교과이수 안내자료 (2026학년도)</p>
-          <p>본 서비스는 참고용 정보를 제공하며, 대학 입학 전형의 공식 기준이 아닙니다.</p>
-          <p>정확한 권장과목 및 입시 정보는 반드시 각 대학 입학처 공식 자료를 통해 확인하시기 바랍니다.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

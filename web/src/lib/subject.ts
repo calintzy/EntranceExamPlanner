@@ -110,3 +110,141 @@ export function extractAllSubjects(subjectGroups: SubjectGroup[]): string[] {
   }
   return Array.from(subjects);
 }
+
+// ── 교육과정 간 과목명 매핑 (GAP 1 해결) ──
+// 2015 개정(2026 데이터) → 2022 개정(2028 데이터) 과목명 매핑
+const CURRICULUM_MAP: Record<string, string> = {
+  "수학Ⅰ": "대수",
+  "수학Ⅱ": "미적분Ⅰ",
+  "미적분": "미적분Ⅱ",
+  "확률과통계": "확률과통계",
+  "물리학Ⅰ": "물리학",
+  "물리학Ⅱ": "물리학Ⅱ",
+  "화학Ⅰ": "화학",
+  "화학Ⅱ": "화학Ⅱ",
+  "생명과학Ⅰ": "생명과학",
+  "생명과학Ⅱ": "생명과학Ⅱ",
+  "지구과학Ⅰ": "지구과학",
+  "지구과학Ⅱ": "지구과학Ⅱ",
+};
+
+// 역방향 매핑 (2022 → 2015)
+const CURRICULUM_MAP_REVERSE: Record<string, string> = {};
+for (const [old, neo] of Object.entries(CURRICULUM_MAP)) {
+  if (old !== neo) CURRICULUM_MAP_REVERSE[neo] = old;
+}
+
+// 교육과정 간 동일 과목 판별 (비교 테이블용)
+export function isSameCourse(a: string, b: string): boolean {
+  const na = normalizeSubject(a);
+  const nb = normalizeSubject(b);
+  if (na === nb) return true;
+  if (CURRICULUM_MAP[na] === nb) return true;
+  if (CURRICULUM_MAP[nb] === na) return true;
+  if (CURRICULUM_MAP_REVERSE[na] === nb) return true;
+  if (CURRICULUM_MAP_REVERSE[nb] === na) return true;
+  return false;
+}
+
+// 연도에 따라 적절한 과목명 반환
+export function getDisplayName(subject: string, year?: number): string {
+  const normalized = normalizeSubject(subject);
+  if (!year) return normalized;
+  // 원본 그대로 표시 (매핑은 비교 시에만 사용)
+  return normalized;
+}
+
+// ── 4단계 선택과목 분류 (GAP 2 해결) ──
+export type CourseLevel = "공통" | "일반선택" | "진로선택" | "융합선택";
+
+const COURSE_LEVEL_MAP: Record<string, CourseLevel> = {
+  // 공통
+  "공통국어": "공통",
+  "공통수학": "공통",
+  "통합사회": "공통",
+  "통합과학": "공통",
+  "공통영어": "공통",
+  // 일반선택 — 수학
+  "대수": "일반선택",
+  "미적분Ⅰ": "일반선택",
+  "확률과통계": "일반선택",
+  // 일반선택 — 과학
+  "물리학": "일반선택",
+  "화학": "일반선택",
+  "생명과학": "일반선택",
+  "지구과학": "일반선택",
+  // 일반선택 — 사회
+  "한국지리": "일반선택",
+  "세계지리": "일반선택",
+  "한국사": "일반선택",
+  "세계사": "일반선택",
+  "경제": "일반선택",
+  "정치와법": "일반선택",
+  "사회문화": "일반선택",
+  "윤리와사상": "일반선택",
+  "생활과윤리": "일반선택",
+  // 일반선택 — 언어
+  "문학": "일반선택",
+  "독서와작문": "일반선택",
+  "영어Ⅰ": "일반선택",
+  "영어Ⅱ": "일반선택",
+  // 진로선택 — 수학
+  "미적분Ⅱ": "진로선택",
+  "기하": "진로선택",
+  "경제수학": "진로선택",
+  // 진로선택 — 과학
+  "물리학Ⅱ": "진로선택",
+  "화학Ⅱ": "진로선택",
+  "생명과학Ⅱ": "진로선택",
+  "지구과학Ⅱ": "진로선택",
+  // 진로선택 — 정보
+  "정보": "진로선택",
+  "인공지능수학": "진로선택",
+  // 진로선택 — 2015 개정 과목 (하위 호환)
+  "수학Ⅰ": "일반선택",
+  "수학Ⅱ": "일반선택",
+  "미적분": "진로선택",
+  "물리학Ⅰ": "일반선택",
+  "화학Ⅰ": "일반선택",
+  "생명과학Ⅰ": "일반선택",
+  "지구과학Ⅰ": "일반선택",
+  // 융합선택
+  "여행지리": "융합선택",
+  "기후변화와 지속가능한 세계": "융합선택",
+  "과학의 역사와 문화": "융합선택",
+  "생태와환경": "융합선택",
+  "융합과학탐구": "융합선택",
+  "사회문제탐구": "융합선택",
+};
+
+export function classifyCourseLevel(subject: string): CourseLevel | null {
+  const normalized = normalizeSubject(subject);
+  return COURSE_LEVEL_MAP[normalized] ?? null;
+}
+
+// ── 레벨별 UI 색상 (공통 사용) ──
+export const LEVEL_COLORS: Record<CourseLevel, string> = {
+  "공통": "bg-gray-100 text-gray-700 border-gray-200",
+  "일반선택": "bg-blue-100 text-blue-700 border-blue-200",
+  "진로선택": "bg-purple-100 text-purple-700 border-purple-200",
+  "융합선택": "bg-teal-100 text-teal-700 border-teal-200",
+};
+
+// ── 카테고리별 과목 태그 색상 (공통 사용, 중복 제거) ──
+export const CORE_COLOR_MAP: Record<string, string> = {
+  수학: "bg-violet-100 text-violet-800 border-violet-200",
+  과학: "bg-emerald-100 text-emerald-800 border-emerald-200",
+  사회: "bg-amber-100 text-amber-800 border-amber-200",
+  언어: "bg-rose-100 text-rose-800 border-rose-200",
+  정보: "bg-cyan-100 text-cyan-800 border-cyan-200",
+  기타: "bg-slate-100 text-slate-800 border-slate-200",
+};
+
+export const REC_COLOR_MAP: Record<string, string> = {
+  수학: "bg-violet-50 text-violet-700 border-violet-100",
+  과학: "bg-emerald-50 text-emerald-700 border-emerald-100",
+  사회: "bg-amber-50 text-amber-700 border-amber-100",
+  언어: "bg-rose-50 text-rose-700 border-rose-100",
+  정보: "bg-cyan-50 text-cyan-700 border-cyan-100",
+  기타: "bg-slate-50 text-slate-600 border-slate-100",
+};

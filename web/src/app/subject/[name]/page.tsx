@@ -4,9 +4,12 @@ import { courseData } from "@/lib/course-data";
 import {
   getAllSubjects,
   searchBySubject,
+  getDataLabel,
 } from "@/lib/course-utils";
-import { categorizeSubject } from "@/lib/subject";
+import { categorizeSubject, classifyCourseLevel, LEVEL_COLORS } from "@/lib/subject";
 import { notFound } from "next/navigation";
+import { Footer } from "@/components/footer";
+import { GradingInfo } from "@/components/grading-info";
 
 // 모든 고유 과목에 대해 정적 페이지 생성
 export function generateStaticParams() {
@@ -46,6 +49,7 @@ export default async function SubjectPage({ params }: PageProps) {
   if (results.length === 0) notFound();
 
   const category = categorizeSubject(subjectName);
+  const courseLevel = classifyCourseLevel(subjectName);
   const coreResults = results.filter((r) => r.type === "core");
   const recResults = results.filter((r) => r.type === "recommended");
 
@@ -60,30 +64,37 @@ export default async function SubjectPage({ params }: PageProps) {
   );
 
   const categoryColor: Record<string, string> = {
-    수학: "text-violet-600 dark:text-violet-400",
-    과학: "text-emerald-600 dark:text-emerald-400",
-    사회: "text-amber-600 dark:text-amber-400",
-    기타: "text-slate-600 dark:text-slate-400",
+    수학: "text-violet-600",
+    과학: "text-emerald-600",
+    사회: "text-amber-600",
+    기타: "text-slate-600",
   };
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50 dark:from-slate-950 dark:to-slate-900">
-      <header className="border-b border-slate-200 dark:border-slate-800 bg-white/80 dark:bg-slate-950/80 backdrop-blur-sm sticky top-0 z-10">
+    <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
+      <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-4">
           <Link
             href="/search"
-            className="text-slate-500 hover:text-slate-700 dark:hover:text-slate-300 transition-colors"
+            className="text-slate-500 hover:text-slate-700 transition-colors"
           >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
           </Link>
-          <h1 className="text-lg font-bold text-slate-900 dark:text-white">
+          <h1 className="text-lg font-bold text-slate-900">
             {subjectName}
           </h1>
-          <span className={`text-xs font-medium px-2 py-1 rounded ml-auto ${categoryColor[category]}`}>
-            {category}
-          </span>
+          <div className="ml-auto flex items-center gap-2">
+            <span className={`text-xs font-medium px-2 py-1 rounded ${categoryColor[category]}`}>
+              {category}
+            </span>
+            {courseLevel && (
+              <span className={`level-badge text-xs font-medium px-2 py-1 rounded border ${LEVEL_COLORS[courseLevel]}`}>
+                {courseLevel}
+              </span>
+            )}
+          </div>
         </div>
       </header>
 
@@ -109,53 +120,56 @@ export default async function SubjectPage({ params }: PageProps) {
           <span className="mx-2">/</span>
           <Link href="/search" className="hover:text-blue-600">역방향 검색</Link>
           <span className="mx-2">/</span>
-          <span className="text-slate-900 dark:text-white font-medium">{subjectName}</span>
+          <span className="text-slate-900 font-medium">{subjectName}</span>
         </nav>
 
         <div className="space-y-8">
           {/* 요약 */}
           <div>
-            <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">
+            <h2 className="text-2xl font-bold text-slate-900 mb-3">
               {subjectName}을(를) 권장하는 대학/학과
             </h2>
-            <div className="flex gap-4">
-              <div className="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 px-4 py-3 text-center">
-                <div className="text-2xl font-bold text-slate-900 dark:text-white">{results.length}</div>
+            <div className="flex flex-wrap gap-4">
+              <div className="bg-white rounded-xl border border-slate-200 px-4 py-3 text-center">
+                <div className="text-2xl font-bold text-slate-900">{results.length}</div>
                 <div className="text-xs text-slate-500">전체 학과</div>
               </div>
-              <div className="bg-red-50 dark:bg-red-900/20 rounded-xl border border-red-200 dark:border-red-800 px-4 py-3 text-center">
-                <div className="text-2xl font-bold text-red-700 dark:text-red-400">{coreResults.length}</div>
-                <div className="text-xs text-red-600 dark:text-red-400">핵심권장</div>
+              <div className="bg-red-50 rounded-xl border border-red-200 px-4 py-3 text-center">
+                <div className="text-2xl font-bold text-red-700">{coreResults.length}</div>
+                <div className="text-xs text-red-600">핵심권장</div>
               </div>
-              <div className="bg-blue-50 dark:bg-blue-900/20 rounded-xl border border-blue-200 dark:border-blue-800 px-4 py-3 text-center">
-                <div className="text-2xl font-bold text-blue-700 dark:text-blue-400">{recResults.length}</div>
-                <div className="text-xs text-blue-600 dark:text-blue-400">권장</div>
+              <div className="bg-blue-50 rounded-xl border border-blue-200 px-4 py-3 text-center">
+                <div className="text-2xl font-bold text-blue-700">{recResults.length}</div>
+                <div className="text-xs text-blue-600">권장</div>
               </div>
             </div>
           </div>
+
+          {/* 평가 방식 안내 */}
+          <GradingInfo subjects={[subjectName]} />
 
           {/* 핵심권장 학과 */}
           {coreResults.length > 0 && (
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-2 h-2 rounded-full bg-red-500" />
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                <h3 className="text-lg font-semibold text-slate-900">
                   핵심권장과목으로 지정한 학과
                 </h3>
                 <span className="text-sm text-slate-500">({coreResults.length}개)</span>
               </div>
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+              <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
                 {Object.entries(byUniversity)
                   .filter(([, items]) => items.some((i) => i.type === "core"))
                   .map(([univ, items], uIdx, arr) => (
                     <div
                       key={univ}
-                      className={uIdx < arr.length - 1 ? "border-b border-slate-100 dark:border-slate-800" : ""}
+                      className={uIdx < arr.length - 1 ? "border-b border-slate-100" : ""}
                     >
                       <div className="px-6 py-3 flex items-start gap-4">
                         <Link
                           href={`/university/${encodeURIComponent(univ)}`}
-                          className="text-sm font-semibold text-slate-900 dark:text-white hover:text-blue-600 min-w-[4rem]"
+                          className="text-sm font-semibold text-slate-900 hover:text-blue-600 min-w-[4rem]"
                         >
                           {univ}
                         </Link>
@@ -166,7 +180,7 @@ export default async function SubjectPage({ params }: PageProps) {
                               <Link
                                 key={item.department}
                                 href={`/university/${encodeURIComponent(univ)}/${encodeURIComponent(item.department)}`}
-                                className="inline-block px-2.5 py-1 text-xs font-medium bg-red-50 dark:bg-red-900/20 text-red-700 dark:text-red-400 rounded-lg border border-red-100 dark:border-red-900 hover:bg-red-100 dark:hover:bg-red-900/40 transition-colors"
+                                className="inline-block px-2.5 py-1 text-xs font-medium bg-red-50 text-red-700 rounded-lg border border-red-100 hover:bg-red-100 transition-colors"
                               >
                                 {item.department}
                               </Link>
@@ -184,23 +198,23 @@ export default async function SubjectPage({ params }: PageProps) {
             <div>
               <div className="flex items-center gap-2 mb-4">
                 <span className="w-2 h-2 rounded-full bg-blue-500" />
-                <h3 className="text-lg font-semibold text-slate-900 dark:text-white">
+                <h3 className="text-lg font-semibold text-slate-900">
                   권장과목으로 지정한 학과
                 </h3>
                 <span className="text-sm text-slate-500">({recResults.length}개)</span>
               </div>
-              <div className="bg-white dark:bg-slate-900 rounded-2xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+              <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
                 {Object.entries(byUniversity)
                   .filter(([, items]) => items.some((i) => i.type === "recommended"))
                   .map(([univ, items], uIdx, arr) => (
                     <div
                       key={univ}
-                      className={uIdx < arr.length - 1 ? "border-b border-slate-100 dark:border-slate-800" : ""}
+                      className={uIdx < arr.length - 1 ? "border-b border-slate-100" : ""}
                     >
                       <div className="px-6 py-3 flex items-start gap-4">
                         <Link
                           href={`/university/${encodeURIComponent(univ)}`}
-                          className="text-sm font-semibold text-slate-900 dark:text-white hover:text-blue-600 min-w-[4rem]"
+                          className="text-sm font-semibold text-slate-900 hover:text-blue-600 min-w-[4rem]"
                         >
                           {univ}
                         </Link>
@@ -211,7 +225,7 @@ export default async function SubjectPage({ params }: PageProps) {
                               <Link
                                 key={item.department}
                                 href={`/university/${encodeURIComponent(univ)}/${encodeURIComponent(item.department)}`}
-                                className="inline-block px-2.5 py-1 text-xs font-medium bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-400 rounded-lg border border-blue-100 dark:border-blue-900 hover:bg-blue-100 dark:hover:bg-blue-900/40 transition-colors"
+                                className="inline-block px-2.5 py-1 text-xs font-medium bg-blue-50 text-blue-700 rounded-lg border border-blue-100 hover:bg-blue-100 transition-colors"
                               >
                                 {item.department}
                               </Link>
@@ -225,21 +239,15 @@ export default async function SubjectPage({ params }: PageProps) {
           )}
 
           {/* 안내 */}
-          <div className="bg-amber-50 dark:bg-amber-900/20 border border-amber-200 dark:border-amber-800 rounded-xl p-4">
-            <p className="text-sm text-amber-800 dark:text-amber-300">
+          <div className="bg-amber-50 border border-amber-200 rounded-xl p-4">
+            <p className="text-sm text-amber-800">
               <strong>참고:</strong> 권장과목 미이수가 지원 자격을 제한하지는 않지만, 학생부종합전형 서류평가와 정시 교과평가에서 불이익이 있을 수 있습니다.
             </p>
           </div>
         </div>
       </main>
 
-      <footer className="border-t border-slate-200 dark:border-slate-800 py-8 mt-12">
-        <div className="max-w-5xl mx-auto px-6 text-center text-xs text-slate-400 space-y-2">
-          <p>데이터 출처: 각 대학 입학처 모집요강 및 전공연계 교과이수 안내자료 (2026학년도)</p>
-          <p>본 서비스는 참고용 정보를 제공하며, 대학 입학 전형의 공식 기준이 아닙니다.</p>
-          <p>정확한 권장과목 및 입시 정보는 반드시 각 대학 입학처 공식 자료를 통해 확인하시기 바랍니다.</p>
-        </div>
-      </footer>
+      <Footer />
     </div>
   );
 }

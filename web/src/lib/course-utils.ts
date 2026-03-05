@@ -3,6 +3,35 @@
 
 import { CourseRecommendationData } from "./types";
 import { parseSubjects, normalizeSubject } from "./subject";
+import universityMeta from "./university_meta.json";
+
+// ── 대학 메타 데이터 타입 및 헬퍼 (GAP 5, 6 해결) ──
+export interface UniversityMeta {
+  year: number;
+  source: string;
+  region?: string;
+  location?: string;
+  curriculum?: "2015개정" | "2022개정";
+  regularAdmission?: {
+    courseEvalRatio?: number | null;
+    description?: string;
+  };
+}
+
+const meta = universityMeta as Record<string, UniversityMeta>;
+
+export function getUniversityMeta(university: string): UniversityMeta | null {
+  return meta[university] ?? null;
+}
+
+export function getUniversityYear(university: string): number {
+  return meta[university]?.year ?? 2026;
+}
+
+export function getDataLabel(university: string): string {
+  const year = getUniversityYear(university);
+  return `${year}학년도`;
+}
 
 // 대학 목록 조회
 export function getUniversityList(data: CourseRecommendationData): string[] {
