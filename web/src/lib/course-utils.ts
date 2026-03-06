@@ -139,6 +139,63 @@ export function searchBySubject(
   return results;
 }
 
+// 복수 과목 역방향 검색 (AND 교집합):
+// 선택한 과목을 모두 권장하는 대학/학과만 반환
+// 각 과목의 매칭 타입(핵심권장/권장)도 함께 반환
+export interface MultiSubjectResult {
+  university: string;
+  department: string;
+  matches: { subject: string; type: "core" | "recommended" }[];
+  // 핵심권장 2점, 권장 1점으로 합산
+  score: number;
+}
+
+export function searchByMultipleSubjects(
+  data: CourseRecommendationData,
+  subjectNames: string[]
+): MultiSubjectResult[] {
+  if (subjectNames.length === 0) return [];
+  // 단일 과목은 기존 함수 결과를 변환
+  if (subjectNames.length === 1) {
+    return searchBySubject(data, subjectNames[0]).map((r) => ({
+      ...r,
+      matches: [{ subject: subjectNames[0], type: r.type }],
+      score: r.type === "core" ? 2 : 1,
+    }));
+  }
+
+  const normalized = subjectNames.map(normalizeSubject);
+  const results: MultiSubjectResult[] = [];
+
+  for (const [univ, depts] of Object.entries(data)) {
+    for (const [dept, courses] of Object.entries(depts)) {
+      const coreSubjects = parseSubjects(courses.core);
+      const recSubjects = parseSubjects(courses.recommended);
+
+      const matches: { subject: string; type: "core" | "recommended" }[] = [];
+      for (let i = 0; i < normalized.length; i++) {
+        if (coreSubjects.includes(normalized[i])) {
+          matches.push({ subject: subjectNames[i], type: "core" });
+        } else if (recSubjects.includes(normalized[i])) {
+          matches.push({ subject: subjectNames[i], type: "recommended" });
+        }
+      }
+
+      // AND: 모든 과목이 매칭되어야 함
+      if (matches.length === normalized.length) {
+        const score = matches.reduce(
+          (sum, m) => sum + (m.type === "core" ? 2 : 1),
+          0
+        );
+        results.push({ university: univ, department: dept, matches, score });
+      }
+    }
+  }
+
+  // 점수 내림차순 정렬
+  return results.sort((a, b) => b.score - a.score);
+}
+
 // 전체 고유 과목 목록 추출 (정규화 적용, 정렬)
 // generateStaticParams() 및 검색 UI에서 사용
 export function getAllSubjects(data: CourseRecommendationData): string[] {

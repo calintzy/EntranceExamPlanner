@@ -7,6 +7,25 @@
 const NORMALIZATION_MAP: Record<string, string> = {
   "확률과 통계": "확률과통계",
   "인공지능 수학": "인공지능수학",
+  "경제 수학": "경제수학",
+  "세계 시민과 지리": "세계시민과 지리",
+  "생활과 윤리": "생활과윤리",
+  "윤리와 사상": "윤리와사상",
+  "정치와 법": "정치와법",
+  "사회와 문화": "사회문화",
+  "사회 문화": "사회문화",
+  "생명 과학": "생명과학",
+  "지구 과학": "지구과학",
+  "생태와 환경": "생태와환경",
+  "독서와 작문": "독서와작문",
+  "화법과 언어": "화법과언어",
+  "언어와 매체": "언어와매체",
+  "한국 지리": "한국지리",
+  "세계 지리": "세계지리",
+  "동아시아 역사": "동아시아역사",
+  "여행 지리": "여행지리",
+  "융합 과학탐구": "융합과학탐구",
+  "사회문제 탐구": "사회문제탐구",
 };
 
 // ASCII 문자 → 로마숫자/특수문자 정규화
@@ -248,3 +267,96 @@ export const REC_COLOR_MAP: Record<string, string> = {
   정보: "bg-cyan-50 text-cyan-700 border-cyan-100",
   기타: "bg-slate-50 text-slate-600 border-slate-100",
 };
+
+// ── 과목 유효성 검증 (파싱 오류/설명문/파편 필터링) ──
+export function isValidSubject(name: string): boolean {
+  const trimmed = name.trim();
+  // 빈 문자열
+  if (!trimmed) return false;
+  // 1글자 (파편)
+  if (trimmed.length <= 1) return false;
+  // 줄바꿈 포함 (설명문 혼입)
+  if (/[\n\r]/.test(trimmed)) return false;
+  // "-"로 시작 (분류 접두사 혼입: "- 수학")
+  if (trimmed.startsWith("-")) return false;
+  // 닫는 괄호만 남은 파편: "Ⅱ)", "화학)"
+  if (/^[^(]*\)$/.test(trimmed) && !trimmed.includes("(")) return false;
+  // 닫히지 않는 여는 괄호
+  if ((trimmed.match(/\(/g) || []).length !== (trimmed.match(/\)/g) || []).length) return false;
+  // 설명문 패턴 (긴 문장, 조사 포함)
+  if (/이수\s*권장|적성과\s*진로|에\s*따라|중에서|선택하여|관련\s*과목|등을|이상|중\s*택/.test(trimmed)) return false;
+  // 숫자만
+  if (/^\d+$/.test(trimmed)) return false;
+  // 너무 긴 문자열 (과목명은 보통 15자 이내)
+  if (trimmed.length > 20) return false;
+
+  return true;
+}
+
+// ── 정제된 고유 과목 목록 ──
+// isValidSubject 필터 + 정규화 + 중복 제거 + "또는" 분해
+export function getCleanSubjects(allSubjects: string[]): string[] {
+  const cleaned = new Set<string>();
+
+  for (const raw of allSubjects) {
+    // "또는" 관계 분해: "물리학Ⅱ 또는 화학Ⅱ" → 개별 과목
+    const parts = raw.includes("또는")
+      ? raw.split("또는").map((s) => s.trim())
+      : [raw];
+
+    for (const part of parts) {
+      const normalized = normalizeSubject(part);
+      if (isValidSubject(normalized)) {
+        cleaned.add(normalized);
+      }
+    }
+  }
+
+  return Array.from(cleaned).sort();
+}
+
+// ── 계열 그룹핑 ──
+export interface SubjectFamily {
+  representative: string; // "물리학 계열" 또는 "경제" (단독)
+  members: string[];      // ["물리학", "물리학Ⅱ"]
+  category: string;       // "과학"
+}
+
+// 접두사 매칭으로 계열 자동 그룹
+const FAMILY_PREFIXES = [
+  "미적분", "물리학", "화학", "생명과학", "지구과학",
+  "수학", "영어", "국어",
+];
+
+export function groupSubjectsByFamily(subjects: string[]): SubjectFamily[] {
+  const used = new Set<string>();
+  const families: SubjectFamily[] = [];
+
+  // 1. 접두사 기반 계열 그룹
+  for (const prefix of FAMILY_PREFIXES) {
+    const members = subjects.filter(
+      (s) => s.startsWith(prefix) && !used.has(s)
+    );
+    if (members.length >= 2) {
+      for (const m of members) used.add(m);
+      families.push({
+        representative: `${prefix} 계열`,
+        members: members.sort(),
+        category: categorizeSubject(members[0]),
+      });
+    }
+  }
+
+  // 2. 나머지 → 단독 항목
+  for (const s of subjects) {
+    if (!used.has(s)) {
+      families.push({
+        representative: s,
+        members: [s],
+        category: categorizeSubject(s),
+      });
+    }
+  }
+
+  return families;
+}
