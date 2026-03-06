@@ -1,0 +1,20 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 컨셉 2: 책 + 체크마크 — "검증된 입시 가이드" -->
+  <defs>
+    <linearGradient id="bg2" x1="0" y1="0" x2="512" y2="512">
+      <stop offset="0%" stop-color="#1A56DB"/>
+      <stop offset="100%" stop-color="#4338CA"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg2)"/>
+  <!-- 펼쳐진 책 왼쪽 -->
+  <path d="M108 160C108 148 118 140 130 140H240C248 140 256 148 256 160V380C256 380 228 360 190 360H130C118 360 108 352 108 340V160Z" fill="white" opacity="0.9"/>
+  <!-- 펼쳐진 책 오른쪽 -->
+  <path d="M404 160C404 148 394 140 382 140H272C264 140 256 148 256 160V380C256 380 284 360 322 360H382C394 360 404 352 404 340V160Z" fill="white"/>
+  <!-- 책 라인들 (왼쪽) -->
+  <line x1="148" y1="200" x2="228" y2="200" stroke="#1A56DB" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
+  <line x1="148" y1="240" x2="216" y2="240" stroke="#1A56DB" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
+  <line x1="148" y1="280" x2="224" y2="280" stroke="#1A56DB" stroke-width="8" stroke-linecap="round" opacity="0.3"/>
+  <!-- 체크마크 (오른쪽 페이지) -->
+  <path d="M300 250L330 280L380 210" stroke="#1A56DB" stroke-width="20" stroke-linecap="round" stroke-linejoin="round"/>
+</svg>

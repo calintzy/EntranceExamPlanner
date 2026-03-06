@@ -6,6 +6,7 @@ import Link from "next/link";
 const NAV_ITEMS = [
   { href: "/guide", label: "교과 가이드" },
   { href: "/search", label: "과목 검색" },
+  { href: "/my-strategy", label: "맞춤 전략" },
   { href: "/policy", label: "2028 정책" },
   { href: "/contract", label: "계약학과" },
 ];

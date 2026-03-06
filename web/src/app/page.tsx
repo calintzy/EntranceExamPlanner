@@ -4,6 +4,7 @@ import { courseData } from "@/lib/course-data";
 import { getUniversityList } from "@/lib/course-utils";
 import universityMeta from "@/lib/university_meta.json";
 import MobileNav from "@/components/mobile-nav";
+import AuthButton from "@/components/auth-button";
 import { BASE_URL, BRAND_NAME, UNIVERSITY_COUNT } from "@/lib/site-config";
 
 /* ── 메타데이터 ── */
@@ -188,6 +189,9 @@ export default function Home() {
               <Link href="/search" className="px-4 py-2 text-sm font-medium rounded-lg transition-colors footer-link" style={{ color: "var(--text-secondary)" }}>
                 과목 검색
               </Link>
+              <Link href="/my-strategy" className="px-4 py-2 text-sm font-medium rounded-lg transition-colors footer-link" style={{ color: "var(--text-secondary)" }}>
+                맞춤 전략
+              </Link>
               <Link href="/policy" className="px-4 py-2 text-sm font-medium rounded-lg transition-colors footer-link" style={{ color: "var(--text-secondary)" }}>
                 2028 정책
               </Link>
@@ -202,7 +206,10 @@ export default function Home() {
               </span>
             </nav>
 
-            <MobileNav />
+            <div className="flex items-center gap-2">
+              <AuthButton />
+              <MobileNav />
+            </div>
           </div>
         </div>
       </header>
@@ -396,7 +403,7 @@ export default function Home() {
         <section className="max-w-6xl mx-auto px-6 pb-24" aria-labelledby="features-heading">
           <h2 id="features-heading" className="sr-only">주요 기능</h2>
 
-          <div className="grid md:grid-cols-3 gap-6">
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
             {/* 카드 1 — 핵심권장과목 확인 */}
             <Link href="/guide" className="feature-card rounded-2xl p-7 block group">
               <div
@@ -472,6 +479,33 @@ export default function Home() {
               </p>
               <span className="inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#d97706" }}>
                 과목으로 찾기
+                <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                </svg>
+              </span>
+            </Link>
+
+            {/* 카드 4 — 맞춤 전략 */}
+            <Link href="/my-strategy" className="feature-card rounded-2xl p-7 block group">
+              <div
+                className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                style={{ background: "linear-gradient(135deg, rgba(168, 85, 247, 0.12), rgba(139, 92, 246, 0.1))" }}
+              >
+                <svg className="w-6 h-6" style={{ color: "#7c3aed" }} fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.8} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                </svg>
+              </div>
+              <div className="text-xs font-semibold uppercase tracking-widest mb-3" style={{ color: "#7c3aed" }}>
+                핵심 기능 04
+              </div>
+              <h3 className="text-lg font-bold mb-2.5" style={{ color: "var(--text-primary)" }}>
+                맞춤 전략
+              </h3>
+              <p className="text-sm leading-relaxed mb-5" style={{ color: "var(--text-secondary)" }}>
+                목표 대학과 현재 수강 과목을 입력하면, 적합도 점수와 미이수 과목을 분석해드립니다.
+              </p>
+              <span className="inline-flex items-center gap-1.5 text-sm font-semibold" style={{ color: "#7c3aed" }}>
+                적합도 분석
                 <svg className="w-3.5 h-3.5 transition-transform group-hover:translate-x-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                 </svg>
@@ -807,6 +841,7 @@ export default function Home() {
             <nav className="flex items-center gap-6" aria-label="푸터 네비게이션">
               <Link href="/guide" className="footer-link text-sm" style={{ color: "var(--text-tertiary)" }}>교과 가이드</Link>
               <Link href="/search" className="footer-link text-sm" style={{ color: "var(--text-tertiary)" }}>과목 검색</Link>
+              <Link href="/my-strategy" className="footer-link text-sm" style={{ color: "var(--text-tertiary)" }}>맞춤 전략</Link>
               <Link href="/policy" className="footer-link text-sm" style={{ color: "var(--text-tertiary)" }}>2028 정책</Link>
               <Link href="/contract" className="footer-link text-sm" style={{ color: "var(--text-tertiary)" }}>계약학과</Link>
             </nav>

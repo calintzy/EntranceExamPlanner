@@ -460,9 +460,13 @@ export default function PolicyPage() {
 
             {/* 출처 */}
             <div className="space-y-1">
-              <p className="text-xs font-medium" style={{ color: "var(--text-tertiary)" }}>출처</p>
+              <p className="text-xs font-medium" style={{ color: "var(--text-tertiary)" }}>데이터 출처</p>
               <p className="text-xs" style={{ color: "var(--text-tertiary)", opacity: 0.75 }}>
-                대입정보포털 adiga.kr · 대한민국 정책브리핑 · 서울대 입학본부 · 베리타스알파 · 교비트 · 에듀인사이트 · 산에듀
+                대입정보포털 adiga.kr (대교협) · 각 대학 입학처 모집요강
+              </p>
+              <p className="text-xs font-medium mt-2" style={{ color: "var(--text-tertiary)" }}>정책 참고</p>
+              <p className="text-xs" style={{ color: "var(--text-tertiary)", opacity: 0.75 }}>
+                대한민국 정책브리핑 · 서울대 입학본부
               </p>
             </div>
 
