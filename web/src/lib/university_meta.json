@@ -341,5 +341,61 @@
     "location": "전남",
     "source": "adiga.kr 대입정보포털",
     "curriculum": "2022개정"
+  },
+  "서울교육대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "서울",
+    "source": "교육대학교 공통 권장 (초등교원양성)",
+    "curriculum": "2022개정"
+  },
+  "경인교육대": {
+    "year": 2028,
+    "region": "수도권",
+    "location": "인천",
+    "source": "교육대학교 공통 권장 (초등교원양성)",
+    "curriculum": "2022개정"
+  },
+  "공주교육대": {
+    "year": 2028,
+    "region": "중부권",
+    "location": "충남",
+    "source": "교육대학교 공통 권장 (초등교원양성)",
+    "curriculum": "2022개정"
+  },
+  "대구교육대": {
+    "year": 2028,
+    "region": "영남권",
+    "location": "대구",
+    "source": "교육대학교 공통 권장 (초등교원양성)",
+    "curriculum": "2022개정"
+  },
+  "부산교육대": {
+    "year": 2028,
+    "region": "영남권",
+    "location": "부산",
+    "source": "교육대학교 공통 권장 (초등교원양성)",
+    "curriculum": "2022개정"
+  },
+  "춘천교육대": {
+    "year": 2028,
+    "region": "중부권",
+    "location": "강원",
+    "source": "교육대학교 공통 권장 (초등교원양성)",
+    "curriculum": "2022개정"
+  },
+  "청주교육대": {
+    "year": 2028,
+    "region": "중부권",
+    "location": "충북",
+    "source": "교육대학교 공통 권장 (초등교원양성)",
+    "curriculum": "2022개정"
+  },
+  "전주교육대": {
+    "year": 2028,
+    "region": "호남권",
+    "location": "전북",
+    "source": "교육대학교 공통 권장 (초등교원양성)",
+    "curriculum": "2022개정"
   }
 }

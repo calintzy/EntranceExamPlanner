@@ -1,8 +1,7 @@
 import type { MetadataRoute } from "next";
 import { courseData } from "@/lib/course-data";
 import { getAllSubjects } from "@/lib/course-utils";
-
-const BASE_URL = "https://web-kappa-sable-82.vercel.app";
+import { BASE_URL } from "@/lib/site-config";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const entries: MetadataRoute.Sitemap = [];

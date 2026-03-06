@@ -4,16 +4,17 @@ import { courseData } from "@/lib/course-data";
 import { getUniversityList } from "@/lib/course-utils";
 import universityMeta from "@/lib/university_meta.json";
 import MobileNav from "@/components/mobile-nav";
+import { BASE_URL, BRAND_NAME, UNIVERSITY_COUNT } from "@/lib/site-config";
 
 /* ── 메타데이터 ── */
 export const metadata: Metadata = {
-  title: "입시연구소 — 2028 대학별 권장과목 비교 · 역방향 검색",
+  title: `${BRAND_NAME} — 2028 대학별 권장과목 비교 · 역방향 검색`,
   description:
-    "전국 49개 대학의 전공연계 핵심권장과목을 한눈에 비교하고, 내가 선택한 과목으로 유리한 대학을 찾아보세요. adiga.kr 공식 데이터 기반 무료 서비스.",
+    `전국 ${UNIVERSITY_COUNT}개 대학의 전공연계 핵심권장과목을 한눈에 비교하고, 내가 선택한 과목으로 유리한 대학을 찾아보세요. adiga.kr 공식 데이터 기반 무료 서비스.`,
   openGraph: {
-    title: "입시연구소 — 2028 대학별 권장과목 비교 · 역방향 검색",
+    title: `${BRAND_NAME} — 2028 대학별 권장과목 비교 · 역방향 검색`,
     description:
-      "전국 49개 대학의 전공연계 핵심권장과목을 한눈에 비교하세요.",
+      `전국 ${UNIVERSITY_COUNT}개 대학의 전공연계 핵심권장과목을 한눈에 비교하세요.`,
   },
 };
 
@@ -107,12 +108,12 @@ const comparison = findComparisonExample();
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "입시연구소",
-  url: "https://web-kappa-sable-82.vercel.app",
+  name: BRAND_NAME,
+  url: BASE_URL,
   description: `${universities.length}개 대학의 전공연계 핵심권장과목과 권장과목을 한눈에 비교하세요.`,
   potentialAction: {
     "@type": "SearchAction",
-    target: "https://web-kappa-sable-82.vercel.app/search",
+    target: `${BASE_URL}/search`,
     "query-input": "required name=search_term_string",
   },
 };

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Footer } from "@/components/footer";
+import { BASE_URL, UNIVERSITY_COUNT } from "@/lib/site-config";
 
 export const metadata: Metadata = {
   title: "2028 대입 정책 종합 가이드 | 입시연구소",
@@ -96,7 +97,7 @@ export default function PolicyPage() {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "홈", item: "https://web-kappa-sable-82.vercel.app" },
+              { "@type": "ListItem", position: 1, name: "홈", item: BASE_URL },
               { "@type": "ListItem", position: 2, name: "2028 대입 정책 가이드" },
             ],
           }),
@@ -309,7 +310,7 @@ export default function PolicyPage() {
                 </h2>
               </div>
               <p className="text-sm mb-5" style={{ color: "var(--text-secondary)" }}>
-                대교협이 adiga.kr을 통해 <strong style={{ color: "var(--text-primary)" }}>49개 대학</strong>의 전공별 권장과목을 공개합니다.
+                대교협이 adiga.kr을 통해 <strong style={{ color: "var(--text-primary)" }}>{UNIVERSITY_COUNT}개 대학</strong>의 전공별 권장과목을 공개합니다.
               </p>
               <div className="grid sm:grid-cols-2 gap-4 mb-6">
                 <div

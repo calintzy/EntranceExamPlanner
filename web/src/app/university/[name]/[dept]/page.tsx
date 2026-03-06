@@ -21,6 +21,7 @@ import { notFound } from "next/navigation";
 import { YearBadge } from "@/components/year-badge";
 import { Footer } from "@/components/footer";
 import { GradingInfo } from "@/components/grading-info";
+import { BASE_URL } from "@/lib/site-config";
 
 // 대학×학과 모든 조합으로 정적 페이지 생성
 export function generateStaticParams() {
@@ -103,9 +104,9 @@ export default async function DepartmentPage({ params }: PageProps) {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "홈", item: "https://web-kappa-sable-82.vercel.app" },
-              { "@type": "ListItem", position: 2, name: "교과 선택 가이드", item: "https://web-kappa-sable-82.vercel.app/guide" },
-              { "@type": "ListItem", position: 3, name: univName, item: `https://web-kappa-sable-82.vercel.app/university/${encodeURIComponent(univName)}` },
+              { "@type": "ListItem", position: 1, name: "홈", item: BASE_URL },
+              { "@type": "ListItem", position: 2, name: "교과 선택 가이드", item: `${BASE_URL}/guide` },
+              { "@type": "ListItem", position: 3, name: univName, item: `${BASE_URL}/university/${encodeURIComponent(univName)}` },
               { "@type": "ListItem", position: 4, name: `${deptName} 권장과목` },
             ],
           }),

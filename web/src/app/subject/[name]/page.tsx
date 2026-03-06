@@ -10,6 +10,7 @@ import { categorizeSubject, classifyCourseLevel, LEVEL_COLORS } from "@/lib/subj
 import { notFound } from "next/navigation";
 import { Footer } from "@/components/footer";
 import { GradingInfo } from "@/components/grading-info";
+import { BASE_URL } from "@/lib/site-config";
 
 // 모든 고유 과목에 대해 정적 페이지 생성
 export function generateStaticParams() {
@@ -105,8 +106,8 @@ export default async function SubjectPage({ params }: PageProps) {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "홈", item: "https://web-kappa-sable-82.vercel.app" },
-              { "@type": "ListItem", position: 2, name: "역방향 검색", item: "https://web-kappa-sable-82.vercel.app/search" },
+              { "@type": "ListItem", position: 1, name: "홈", item: BASE_URL },
+              { "@type": "ListItem", position: 2, name: "역방향 검색", item: `${BASE_URL}/search` },
               { "@type": "ListItem", position: 3, name: subjectName },
             ],
           }),

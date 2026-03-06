@@ -1,7 +1,12 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "입시연구소 - 49개 대학 권장과목 비교 & 역방향 검색";
+// OG 이미지는 edge runtime에서 실행되므로 courseData import 불가
+// 대신 상수로 직접 관리
+const OG_BRAND_NAME = "입시연구소";
+const OG_UNIVERSITY_COUNT = 57;
+
+export const alt = `${OG_BRAND_NAME} - ${OG_UNIVERSITY_COUNT}개 대학 권장과목 비교 & 역방향 검색`;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -21,7 +26,7 @@ export default function Image() {
         }}
       >
         <div style={{ display: "flex", fontSize: "28px", color: "#94a3b8", marginBottom: "32px" }}>
-          {`입시연구소 · 49개 대학`}
+          {`${OG_BRAND_NAME} · ${OG_UNIVERSITY_COUNT}개 대학`}
         </div>
         <div
           style={{

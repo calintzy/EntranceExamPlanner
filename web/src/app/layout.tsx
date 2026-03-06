@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
+import { BASE_URL, BRAND_NAME, UNIVERSITY_COUNT } from "@/lib/site-config";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -12,15 +13,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const BASE_URL = "https://web-kappa-sable-82.vercel.app";
-
 export const metadata: Metadata = {
   title: {
-    default: "입시연구소 - 대학별 권장과목 비교 & 역방향 검색",
-    template: "%s | 입시연구소",
+    default: `${BRAND_NAME} - 대학별 권장과목 비교 & 역방향 검색`,
+    template: `%s | ${BRAND_NAME}`,
   },
   description:
-    "전국 49개 대학의 전공연계 핵심권장과목과 권장과목을 한눈에 비교하세요. 내가 선택한 과목으로 유리한 대학을 역방향 검색할 수 있습니다.",
+    `전국 ${UNIVERSITY_COUNT}개 대학의 전공연계 핵심권장과목과 권장과목을 한눈에 비교하세요. 내가 선택한 과목으로 유리한 대학을 역방향 검색할 수 있습니다.`,
   metadataBase: new URL(BASE_URL),
   alternates: {
     canonical: "/",
@@ -28,17 +27,17 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    siteName: "입시연구소",
-    title: "입시연구소 - 49개 대학 권장과목 비교 & 역방향 검색",
+    siteName: BRAND_NAME,
+    title: `${BRAND_NAME} - ${UNIVERSITY_COUNT}개 대학 권장과목 비교 & 역방향 검색`,
     description:
-      "전국 49개 대학의 전공연계 핵심권장과목을 비교하고, 내 과목으로 유리한 대학을 찾아보세요.",
+      `전국 ${UNIVERSITY_COUNT}개 대학의 전공연계 핵심권장과목을 비교하고, 내 과목으로 유리한 대학을 찾아보세요.`,
     url: BASE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "입시연구소 - 대학별 권장과목 비교",
+    title: `${BRAND_NAME} - 대학별 권장과목 비교`,
     description:
-      "전국 49개 대학 전공연계 권장과목 비교 및 역방향 검색 서비스",
+      `전국 ${UNIVERSITY_COUNT}개 대학 전공연계 권장과목 비교 및 역방향 검색 서비스`,
   },
   keywords: [
     "입시연구소",

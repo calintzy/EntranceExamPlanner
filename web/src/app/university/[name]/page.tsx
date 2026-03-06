@@ -5,6 +5,7 @@ import { getUniversityList, getDepartments, getUniversityMeta, getDataLabel } fr
 import { notFound } from "next/navigation";
 import { YearBadge } from "@/components/year-badge";
 import { Footer } from "@/components/footer";
+import { BASE_URL } from "@/lib/site-config";
 
 // 대학별 정적 페이지 생성
 export function generateStaticParams() {
@@ -74,8 +75,8 @@ export default async function UniversityPage({ params }: PageProps) {
             "@context": "https://schema.org",
             "@type": "BreadcrumbList",
             itemListElement: [
-              { "@type": "ListItem", position: 1, name: "홈", item: "https://web-kappa-sable-82.vercel.app" },
-              { "@type": "ListItem", position: 2, name: "교과 선택 가이드", item: "https://web-kappa-sable-82.vercel.app/guide" },
+              { "@type": "ListItem", position: 1, name: "홈", item: BASE_URL },
+              { "@type": "ListItem", position: 2, name: "교과 선택 가이드", item: `${BASE_URL}/guide` },
               { "@type": "ListItem", position: 3, name: `${univName} 권장과목` },
             ],
           }),

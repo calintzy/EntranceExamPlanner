@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
-
-const BASE_URL = "https://web-kappa-sable-82.vercel.app";
+import { BASE_URL } from "@/lib/site-config";
 
 export default function robots(): MetadataRoute.Robots {
   return {
