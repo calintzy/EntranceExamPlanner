@@ -16,8 +16,8 @@ const BASE_URL = "https://web-kappa-sable-82.vercel.app";
 
 export const metadata: Metadata = {
   title: {
-    default: "입시플래너 - 대학별 권장과목 비교 & 역방향 검색",
-    template: "%s | 입시플래너",
+    default: "입시연구소 - 대학별 권장과목 비교 & 역방향 검색",
+    template: "%s | 입시연구소",
   },
   description:
     "전국 49개 대학의 전공연계 핵심권장과목과 권장과목을 한눈에 비교하세요. 내가 선택한 과목으로 유리한 대학을 역방향 검색할 수 있습니다.",
@@ -28,20 +28,20 @@ export const metadata: Metadata = {
   openGraph: {
     type: "website",
     locale: "ko_KR",
-    siteName: "입시플래너",
-    title: "입시플래너 - 49개 대학 권장과목 비교 & 역방향 검색",
+    siteName: "입시연구소",
+    title: "입시연구소 - 49개 대학 권장과목 비교 & 역방향 검색",
     description:
       "전국 49개 대학의 전공연계 핵심권장과목을 비교하고, 내 과목으로 유리한 대학을 찾아보세요.",
     url: BASE_URL,
   },
   twitter: {
     card: "summary_large_image",
-    title: "입시플래너 - 대학별 권장과목 비교",
+    title: "입시연구소 - 대학별 권장과목 비교",
     description:
       "전국 49개 대학 전공연계 권장과목 비교 및 역방향 검색 서비스",
   },
   keywords: [
-    "입시플래너",
+    "입시연구소",
     "권장과목",
     "핵심권장과목",
     "전공연계교과",

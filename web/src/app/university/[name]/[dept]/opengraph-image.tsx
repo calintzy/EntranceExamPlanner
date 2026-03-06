@@ -48,7 +48,7 @@ export default async function Image({
         }}
       >
         <div style={{ display: "flex", fontSize: "24px", color: "#94a3b8", marginBottom: "16px" }}>
-          {`입시플래너`}
+          {`입시연구소`}
         </div>
         <div style={{ display: "flex", fontSize: "36px", color: "#60a5fa", marginBottom: "8px" }}>
           {univName}

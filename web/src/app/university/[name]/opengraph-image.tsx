@@ -32,7 +32,7 @@ export default async function Image({ params }: { params: Promise<{ name: string
         }}
       >
         <div style={{ display: "flex", fontSize: "24px", color: "#94a3b8", marginBottom: "16px" }}>
-          {`입시플래너`}
+          {`입시연구소`}
         </div>
         <div
           style={{

@@ -4,7 +4,7 @@ import { contractData, getTracksByCorporation } from "@/lib/contract-data";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "첨단분야 계약학과 트래커 — 삼성·SK·현대·LG 채용연계 | 입시플래너",
+  title: "첨단분야 계약학과 트래커 — 삼성·SK·현대·LG 채용연계 | 입시연구소",
   description:
     "삼성전자, SK하이닉스, 현대자동차, LG전자 등 대기업 채용연계 계약학과 현황. 등록금 전액 지원 + 취업보장 학과를 한눈에 비교하세요.",
   openGraph: {

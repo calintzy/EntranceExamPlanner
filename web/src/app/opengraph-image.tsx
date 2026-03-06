@@ -1,7 +1,7 @@
 import { ImageResponse } from "next/og";
 
 export const runtime = "edge";
-export const alt = "입시플래너 - 49개 대학 권장과목 비교 & 역방향 검색";
+export const alt = "입시연구소 - 49개 대학 권장과목 비교 & 역방향 검색";
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 
@@ -21,7 +21,7 @@ export default function Image() {
         }}
       >
         <div style={{ display: "flex", fontSize: "28px", color: "#94a3b8", marginBottom: "32px" }}>
-          {`입시플래너 · 49개 대학`}
+          {`입시연구소 · 49개 대학`}
         </div>
         <div
           style={{

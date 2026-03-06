@@ -3,7 +3,7 @@ import Link from "next/link";
 import { Footer } from "@/components/footer";
 
 export const metadata: Metadata = {
-  title: "2028 대입 정책 종합 가이드 | 입시플래너",
+  title: "2028 대입 정책 종합 가이드 | 입시연구소",
   description:
     "2028학년도 대입 핵심 변화를 한눈에 정리. 2022 개정 교육과정 선택과목 체계, 수능 통합형 전환, 고교학점제, 권장과목 제도, 정시 교과평가 확대까지.",
   openGraph: {
@@ -28,7 +28,7 @@ export default function PolicyPage() {
                   </svg>
                 </div>
                 <span className="text-base font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
-                  입시플래너
+                  입시연구소
                 </span>
               </Link>
             </div>

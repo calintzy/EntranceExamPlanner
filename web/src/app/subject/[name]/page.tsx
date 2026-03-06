@@ -32,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const univs = [...new Set(results.map((r) => r.university))];
 
   return {
-    title: `${subjectName} 권장 대학/학과 - ${results.length}개 학과 | 입시플래너`,
+    title: `${subjectName} 권장 대학/학과 - ${results.length}개 학과 | 입시연구소`,
     description: `${subjectName}을(를) 핵심권장(${coreCount}개) 또는 권장(${recCount}개)하는 대학과 학과 목록. ${univs.join(", ")} 등.`,
     openGraph: {
       title: `${subjectName} - 이 과목을 권장하는 대학은?`,

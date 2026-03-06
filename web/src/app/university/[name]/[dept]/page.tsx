@@ -49,7 +49,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const yearLabel = getDataLabel(univName);
 
   return {
-    title: `${univName} ${deptName} 권장과목 (${yearLabel}) | 입시플래너`,
+    title: `${univName} ${deptName} 권장과목 (${yearLabel}) | 입시연구소`,
     description: `${univName} ${deptName}의 핵심권장과목과 권장과목을 확인하세요. ${allSubjects} 등 교과 선택 가이드. ${yearLabel} 기준.`,
     openGraph: {
       title: `${univName} ${deptName} 권장과목`,

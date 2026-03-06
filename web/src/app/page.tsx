@@ -7,11 +7,11 @@ import MobileNav from "@/components/mobile-nav";
 
 /* ── 메타데이터 ── */
 export const metadata: Metadata = {
-  title: "입시플래너 — 2028 대학별 권장과목 비교 · 역방향 검색",
+  title: "입시연구소 — 2028 대학별 권장과목 비교 · 역방향 검색",
   description:
     "전국 49개 대학의 전공연계 핵심권장과목을 한눈에 비교하고, 내가 선택한 과목으로 유리한 대학을 찾아보세요. adiga.kr 공식 데이터 기반 무료 서비스.",
   openGraph: {
-    title: "입시플래너 — 2028 대학별 권장과목 비교 · 역방향 검색",
+    title: "입시연구소 — 2028 대학별 권장과목 비교 · 역방향 검색",
     description:
       "전국 49개 대학의 전공연계 핵심권장과목을 한눈에 비교하세요.",
   },
@@ -107,7 +107,7 @@ const comparison = findComparisonExample();
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
-  name: "입시플래너",
+  name: "입시연구소",
   url: "https://web-kappa-sable-82.vercel.app",
   description: `${universities.length}개 대학의 전공연계 핵심권장과목과 권장과목을 한눈에 비교하세요.`,
   potentialAction: {
@@ -176,7 +176,7 @@ export default function Home() {
                 </svg>
               </div>
               <span className="text-base font-bold tracking-tight" style={{ color: "var(--text-primary)" }}>
-                입시플래너
+                입시연구소
               </span>
             </div>
 
@@ -647,7 +647,7 @@ export default function Home() {
             {/* 결론 + 링크 */}
             <div className="text-center mt-10">
               <p className="text-sm font-medium mb-4" style={{ color: "var(--text-secondary)" }}>
-                이 모든 변화 속에서, <strong style={{ color: "var(--brand-blue)" }}>입시플래너</strong>가 가장 명확한 교과 선택 길잡이가 되어드립니다.
+                이 모든 변화 속에서, <strong style={{ color: "var(--brand-blue)" }}>입시연구소</strong>가 가장 명확한 교과 선택 길잡이가 되어드립니다.
               </p>
               <Link
                 href="/policy"
@@ -758,7 +758,7 @@ export default function Home() {
             <p className="text-base text-blue-200 mb-8 leading-relaxed">
               우리 아이에게 맞는 교과 선택,
               <br className="md:hidden" />
-              입시플래너와 함께 준비하세요.
+              입시연구소와 함께 준비하세요.
             </p>
             <div className="flex flex-col sm:flex-row justify-center gap-4">
               <Link
@@ -796,7 +796,7 @@ export default function Home() {
                     <path d="M3 14L3 7M7 14V4M11 14V9M15 14V6" stroke="white" strokeWidth="2" strokeLinecap="round"/>
                   </svg>
                 </div>
-                <span className="text-sm font-bold" style={{ color: "var(--text-primary)" }}>입시플래너</span>
+                <span className="text-sm font-bold" style={{ color: "var(--text-primary)" }}>입시연구소</span>
               </div>
               <p className="text-xs" style={{ color: "var(--text-tertiary)" }}>
                 고교학점제 시대를 위한 전략적 교과 선택 가이드
