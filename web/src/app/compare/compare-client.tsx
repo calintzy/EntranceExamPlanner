@@ -3,6 +3,7 @@
 import { useState, useMemo, useCallback, useEffect } from "react";
 import Link from "next/link";
 import { useSearchParams } from "next/navigation";
+import { useSession, signIn } from "next-auth/react";
 import { CourseRecommendationData } from "@/lib/types";
 import { compareProfiles, type CompareResult } from "@/lib/compare-profiles";
 import { normalizeSubject, categorizeSubject } from "@/lib/subject";
@@ -30,6 +31,8 @@ const CATEGORY_BADGE: Record<string, string> = {
 };
 
 export default function CompareClient({ courseData, allSubjects }: Props) {
+  const { data: session } = useSession();
+  const isLoggedIn = !!session;
   const searchParams = useSearchParams();
 
   // ── 상태 ──
@@ -162,19 +165,33 @@ export default function CompareClient({ courseData, allSubjects }: Props) {
               label="나의 과목"
               description="이수했거나 수강 예정인 과목을 선택하세요"
             />
-            {/* 공유 링크 생성 */}
+            {/* 공유 링크 생성 (로그인 필요) */}
             {myCourses.size > 0 && (
-              <button
-                onClick={generateShareUrl}
-                className="w-full py-3 text-sm font-semibold rounded-xl transition-all hover:-translate-y-0.5"
-                style={{
-                  background: copied ? "rgba(16, 185, 129, 0.1)" : "rgba(26, 86, 219, 0.08)",
-                  color: copied ? "#059669" : "var(--brand-blue)",
-                  border: `1px solid ${copied ? "rgba(16, 185, 129, 0.2)" : "rgba(26, 86, 219, 0.16)"}`,
-                }}
-              >
-                {copied ? "링크가 복사되었습니다!" : "내 과목 공유 링크 복사"}
-              </button>
+              isLoggedIn ? (
+                <button
+                  onClick={generateShareUrl}
+                  className="w-full py-3 text-sm font-semibold rounded-xl transition-all hover:-translate-y-0.5"
+                  style={{
+                    background: copied ? "rgba(16, 185, 129, 0.1)" : "rgba(26, 86, 219, 0.08)",
+                    color: copied ? "#059669" : "var(--brand-blue)",
+                    border: `1px solid ${copied ? "rgba(16, 185, 129, 0.2)" : "rgba(26, 86, 219, 0.16)"}`,
+                  }}
+                >
+                  {copied ? "링크가 복사되었습니다!" : "내 과목 공유 링크 복사"}
+                </button>
+              ) : (
+                <button
+                  onClick={() => signIn()}
+                  className="w-full py-3 text-sm font-semibold rounded-xl transition-all hover:-translate-y-0.5"
+                  style={{
+                    background: "rgba(26, 86, 219, 0.06)",
+                    color: "var(--text-secondary)",
+                    border: "1px solid var(--border-subtle)",
+                  }}
+                >
+                  로그인하면 친구에게 공유할 비교 링크를 만들 수 있어요
+                </button>
+              )
             )}
           </div>
 

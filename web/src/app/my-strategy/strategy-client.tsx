@@ -236,6 +236,8 @@ export default function StrategyClient({
   const [swapDrop, setSwapDrop] = useState("");
   const [swapAdd, setSwapAdd] = useState("");
   const [swapResult, setSwapResult] = useState<SwapResult | null>(null);
+  const [swapCount, setSwapCount] = useState(0);
+  const maxSwaps = isLoggedIn ? Infinity : 1;
 
   // 선택된 과목 배열 (드롭다운용)
   const selectedCoursesArray = useMemo(() => Array.from(selectedCourses), [selectedCourses]);
@@ -247,8 +249,10 @@ export default function StrategyClient({
 
   function runSwapSimulation() {
     if (!swapDrop || !swapAdd || selectedCourses.size === 0) return;
+    if (swapCount >= maxSwaps) return;
     const result = simulateSwap(courseData, Array.from(selectedCourses), swapDrop, swapAdd);
     setSwapResult(result);
+    setSwapCount((c) => c + 1);
   }
 
   // ── 탭 바 ──
@@ -1405,20 +1409,30 @@ export default function StrategyClient({
 
             {/* 시뮬레이션 버튼 */}
             <div className="text-center mb-8">
-              <button
-                onClick={runSwapSimulation}
-                disabled={!swapDrop || !swapAdd || selectedCourses.size === 0}
-                className="inline-flex items-center gap-2.5 px-8 py-4 text-base font-semibold text-white rounded-2xl transition-all hover:-translate-y-0.5 disabled:opacity-40 disabled:hover:translate-y-0"
-                style={{
-                  background: swapDrop && swapAdd ? "var(--brand-blue)" : "var(--surface-2)",
-                  boxShadow: swapDrop && swapAdd ? "0 8px 30px rgba(37, 99, 235, 0.3)" : "none",
-                }}
-              >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
-                </svg>
-                교체 시뮬레이션
-              </button>
+              {swapCount >= maxSwaps && !isLoggedIn ? (
+                <button
+                  onClick={() => signIn()}
+                  className="inline-flex items-center gap-2.5 px-8 py-4 text-base font-semibold rounded-2xl transition-all hover:-translate-y-0.5"
+                  style={{ background: "rgba(26, 86, 219, 0.08)", color: "var(--brand-blue)", border: "1px solid rgba(26, 86, 219, 0.16)" }}
+                >
+                  로그인하면 다양한 교체 시나리오를 비교할 수 있어요
+                </button>
+              ) : (
+                <button
+                  onClick={runSwapSimulation}
+                  disabled={!swapDrop || !swapAdd || selectedCourses.size === 0}
+                  className="inline-flex items-center gap-2.5 px-8 py-4 text-base font-semibold text-white rounded-2xl transition-all hover:-translate-y-0.5 disabled:opacity-40 disabled:hover:translate-y-0"
+                  style={{
+                    background: swapDrop && swapAdd ? "var(--brand-blue)" : "var(--surface-2)",
+                    boxShadow: swapDrop && swapAdd ? "0 8px 30px rgba(37, 99, 235, 0.3)" : "none",
+                  }}
+                >
+                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4" />
+                  </svg>
+                  교체 시뮬레이션
+                </button>
+              )}
             </div>
 
             {/* 시뮬레이션 결과 */}
@@ -1475,8 +1489,27 @@ export default function StrategyClient({
                   </div>
                 </div>
 
-                {/* 등급 상승 학과 */}
-                {swapResult.gained.length > 0 && (
+                {/* 비로그인: 요약만 + 로그인 유도 */}
+                {!isLoggedIn && (
+                  <div
+                    className="rounded-2xl p-6 text-center"
+                    style={{ background: "rgba(26, 86, 219, 0.04)", border: "1px solid rgba(26, 86, 219, 0.12)" }}
+                  >
+                    <p className="text-sm mb-3" style={{ color: "var(--text-secondary)" }}>
+                      등급 상승 <strong className="text-emerald-600">{swapResult.gained.length}개</strong>, 하락 <strong className="text-red-600">{swapResult.lost.length}개</strong> 학과가 있습니다
+                    </p>
+                    <button
+                      onClick={() => signIn()}
+                      className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold rounded-xl transition-all hover:-translate-y-0.5"
+                      style={{ background: "var(--brand-blue)", color: "white" }}
+                    >
+                      로그인하면 상세 학과 목록을 확인할 수 있어요
+                    </button>
+                  </div>
+                )}
+
+                {/* 로그인: 상세 학과 목록 */}
+                {isLoggedIn && swapResult.gained.length > 0 && (
                   <div
                     className="rounded-2xl p-6 md:p-8"
                     style={{
@@ -1489,7 +1522,7 @@ export default function StrategyClient({
                       등급 상승 학과 (+{swapResult.gained.length})
                     </h3>
                     <div className="space-y-2">
-                      {(isLoggedIn ? swapResult.gained : swapResult.gained.slice(0, 3)).map((d, i) => (
+                      {swapResult.gained.map((d, i) => (
                         <div
                           key={i}
                           className="flex items-center justify-between px-4 py-2.5 rounded-xl"
@@ -1511,21 +1544,11 @@ export default function StrategyClient({
                           </div>
                         </div>
                       ))}
-                      {!isLoggedIn && swapResult.gained.length > 3 && (
-                        <button
-                          onClick={() => signIn()}
-                          className="w-full py-3 text-sm font-semibold rounded-xl transition-colors"
-                          style={{ background: "rgba(26, 86, 219, 0.08)", color: "var(--brand-blue)" }}
-                        >
-                          로그인하면 {swapResult.gained.length - 3}개 더 볼 수 있어요
-                        </button>
-                      )}
                     </div>
                   </div>
                 )}
 
-                {/* 등급 하락 학과 */}
-                {swapResult.lost.length > 0 && (
+                {isLoggedIn && swapResult.lost.length > 0 && (
                   <div
                     className="rounded-2xl p-6 md:p-8"
                     style={{
@@ -1538,7 +1561,7 @@ export default function StrategyClient({
                       등급 하락 학과 (-{swapResult.lost.length})
                     </h3>
                     <div className="space-y-2">
-                      {(isLoggedIn ? swapResult.lost : swapResult.lost.slice(0, 3)).map((d, i) => (
+                      {swapResult.lost.map((d, i) => (
                         <div
                           key={i}
                           className="flex items-center justify-between px-4 py-2.5 rounded-xl"
@@ -1560,15 +1583,6 @@ export default function StrategyClient({
                           </div>
                         </div>
                       ))}
-                      {!isLoggedIn && swapResult.lost.length > 3 && (
-                        <button
-                          onClick={() => signIn()}
-                          className="w-full py-3 text-sm font-semibold rounded-xl transition-colors"
-                          style={{ background: "rgba(26, 86, 219, 0.08)", color: "var(--brand-blue)" }}
-                        >
-                          로그인하면 {swapResult.lost.length - 3}개 더 볼 수 있어요
-                        </button>
-                      )}
                     </div>
                   </div>
                 )}

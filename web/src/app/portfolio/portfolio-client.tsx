@@ -81,7 +81,7 @@ export default function PortfolioClient({
   // ── 핸들러 ──
   function addTarget() {
     if (!currentUni || !currentDept) return;
-    if (targets.length >= 10) return;
+    if (targets.length >= maxTargets) return;
     if (targets.some((t) => t.university === currentUni && t.department === currentDept)) return;
     setTargets([...targets, { university: currentUni, department: currentDept }]);
     setCurrentDept("");
@@ -120,150 +120,11 @@ export default function PortfolioClient({
   }
 
   // ── 단계 계산 ──
+  const maxTargets = isLoggedIn ? 10 : 2;
   const canAnalyze = targets.length >= 2 && selectedCourses.size > 0;
   const currentStep = targets.length < 2 ? 1 : !showResults ? 2 : 3;
 
-  // ── 비로그인 전체 페이지 로그인 유도 ──
-  if (!isLoggedIn) {
-    return (
-      <div className="min-h-screen" style={{ background: "var(--background)", color: "var(--foreground)" }}>
-        {/* 헤더 */}
-        <header className="header-glass sticky top-0 z-50">
-          <div className="max-w-6xl mx-auto px-6 py-0">
-            <div className="flex items-center justify-between h-16">
-              <Link href="/" className="flex items-center gap-3">
-                <div
-                  className="w-8 h-8 rounded-lg flex items-center justify-center"
-                  style={{ background: "var(--brand-blue)" }}
-                >
-                  <svg width="18" height="18" viewBox="0 0 512 512" fill="none" aria-hidden="true">
-                    <path d="M108 160C108 148 118 140 130 140H240C248 140 256 148 256 160V380C256 380 228 360 190 360H130C118 360 108 352 108 340V160Z" fill="white" opacity="0.7"/>
-                    <path d="M404 160C404 148 394 140 382 140H272C264 140 256 148 256 160V380C256 380 284 360 322 360H382C394 360 404 352 404 340V160Z" fill="white"/>
-                    <path d="M300 250L330 280L380 210" stroke="#1A56DB" strokeWidth="20" strokeLinecap="round" strokeLinejoin="round"/>
-                  </svg>
-                </div>
-                <span
-                  className="text-base font-bold tracking-tight"
-                  style={{ color: "var(--text-primary)" }}
-                >
-                  입시연구소
-                </span>
-              </Link>
-              <DesktopNav activePath="/portfolio" />
-              <div className="flex items-center gap-2">
-                <AuthButton />
-                <MobileNav />
-              </div>
-            </div>
-          </div>
-        </header>
-
-        {/* 로그인 유도 전체 화면 */}
-        <main className="max-w-2xl mx-auto px-6 py-20 flex flex-col items-center text-center">
-          {/* 아이콘 */}
-          <div
-            className="w-16 h-16 rounded-2xl flex items-center justify-center mb-6"
-            style={{ background: "rgba(26, 86, 219, 0.1)" }}
-          >
-            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" aria-hidden="true">
-              <path d="M4 28V10L16 4L28 10V28" stroke="var(--brand-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M12 28V20H20V28" stroke="var(--brand-blue)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" />
-              <path d="M8 14H12M20 14H24M8 19H12M20 19H24" stroke="var(--brand-blue)" strokeWidth="2" strokeLinecap="round" />
-            </svg>
-          </div>
-
-          <h1
-            className="text-2xl md:text-3xl font-bold tracking-tight mb-3"
-            style={{ color: "var(--text-primary)" }}
-          >
-            전략 포트폴리오
-          </h1>
-          <p className="text-base mb-8" style={{ color: "var(--text-secondary)" }}>
-            로그인하면 모든 기능을 무료로 이용할 수 있어요
-          </p>
-
-          {/* 혜택 목록 */}
-          <div
-            className="w-full rounded-2xl p-6 mb-8 text-left space-y-4"
-            style={{
-              background: "var(--surface-1)",
-              border: "1px solid var(--border-subtle)",
-              boxShadow: "var(--shadow-card)",
-            }}
-          >
-            {[
-              {
-                icon: (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" />
-                    <circle cx="9" cy="7" r="4" />
-                    <path d="M23 21v-2a4 4 0 0 0-3-3.87" />
-                    <path d="M16 3.13a4 4 0 0 1 0 7.75" />
-                  </svg>
-                ),
-                title: "최대 10개 대학/학과를 동시에 분석",
-                desc: "여러 대학을 한눈에 비교하여 최적 전략을 세워보세요",
-              },
-              {
-                icon: (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polyline points="22 12 18 12 15 21 9 3 6 12 2 12" />
-                  </svg>
-                ),
-                title: "과목 1개 추가 시 전체 적합도 변화 시뮬레이션",
-                desc: "어떤 과목을 추가하면 점수가 가장 많이 오르는지 확인하세요",
-              },
-              {
-                icon: (
-                  <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
-                  </svg>
-                ),
-                title: "공통 핵심과목 · 가성비 과목 자동 추출",
-                desc: "목표 대학 전체에 영향을 주는 핵심 과목을 찾아드립니다",
-              },
-            ].map((item, i) => (
-              <div key={i} className="flex items-start gap-3">
-                <div
-                  className="shrink-0 w-8 h-8 rounded-lg flex items-center justify-center mt-0.5"
-                  style={{ background: "rgba(26, 86, 219, 0.08)", color: "var(--brand-blue)" }}
-                >
-                  {item.icon}
-                </div>
-                <div>
-                  <p className="text-sm font-semibold" style={{ color: "var(--text-primary)" }}>
-                    {item.title}
-                  </p>
-                  <p className="text-xs mt-0.5" style={{ color: "var(--text-tertiary)" }}>
-                    {item.desc}
-                  </p>
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* 로그인 버튼 */}
-          <button
-            onClick={() => signIn()}
-            className="w-full max-w-xs px-8 py-4 text-base font-semibold text-white rounded-2xl transition-all hover:-translate-y-0.5"
-            style={{
-              background: "var(--brand-blue)",
-              boxShadow: "0 8px 30px rgba(37, 99, 235, 0.3)",
-            }}
-          >
-            무료로 시작하기
-          </button>
-          <p className="text-xs mt-3" style={{ color: "var(--text-tertiary)" }}>
-            카카오 또는 구글 계정으로 1초 로그인
-          </p>
-        </main>
-
-        <Footer />
-      </div>
-    );
-  }
-
-  // ── 로그인 상태: 본 기능 UI ──
+  // ── 본 기능 UI (비로그인도 체험 가능) ──
   return (
     <div className="min-h-screen" style={{ background: "var(--background)", color: "var(--foreground)" }}>
       {/* 헤더 */}
@@ -671,8 +532,35 @@ export default function PortfolioClient({
               </div>
             </div>
 
-            {/* ─── 3. 추천 과목 TOP 5 ─── */}
-            {portfolioResult.recommendations.length > 0 && (
+            {/* ─── 비로그인: 상세 분석 잠금 + 로그인 유도 ─── */}
+            {!isLoggedIn && (
+              <div
+                className="rounded-2xl p-8 text-center"
+                style={{ background: "rgba(26, 86, 219, 0.04)", border: "1px solid rgba(26, 86, 219, 0.12)" }}
+              >
+                <div className="w-12 h-12 rounded-xl flex items-center justify-center mx-auto mb-4" style={{ background: "rgba(26, 86, 219, 0.1)" }}>
+                  <svg className="w-6 h-6" fill="none" stroke="var(--brand-blue)" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M16.5 10.5V6.75a4.5 4.5 0 1 0-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 0 0 2.25-2.25v-6.75a2.25 2.25 0 0 0-2.25-2.25H6.75a2.25 2.25 0 0 0-2.25 2.25v6.75a2.25 2.25 0 0 0 2.25 2.25Z" />
+                  </svg>
+                </div>
+                <p className="text-base font-bold mb-2" style={{ color: "var(--text-primary)" }}>
+                  추천 과목 · 핵심과목 · 가성비 과목 분석
+                </p>
+                <p className="text-sm mb-5" style={{ color: "var(--text-secondary)" }}>
+                  로그인하면 최대 10개 대학 동시 분석과 상세 추천을 확인할 수 있어요
+                </p>
+                <button
+                  onClick={() => signIn()}
+                  className="inline-flex items-center gap-2 px-6 py-3 text-sm font-semibold text-white rounded-xl transition-all hover:-translate-y-0.5"
+                  style={{ background: "var(--brand-blue)", boxShadow: "0 6px 20px rgba(37, 99, 235, 0.3)" }}
+                >
+                  카카오 · 구글 간편 로그인
+                </button>
+              </div>
+            )}
+
+            {/* ─── 3. 추천 과목 TOP 5 (로그인 전용) ─── */}
+            {isLoggedIn && portfolioResult.recommendations.length > 0 && (
               <div
                 className="rounded-2xl p-6 md:p-8"
                 style={{
@@ -782,8 +670,8 @@ export default function PortfolioClient({
               </div>
             )}
 
-            {/* ─── 4. 공통 핵심과목 ─── */}
-            {portfolioResult.commonCore.length > 0 && (
+            {/* ─── 4. 공통 핵심과목 (로그인 전용) ─── */}
+            {isLoggedIn && portfolioResult.commonCore.length > 0 && (
               <div
                 className="rounded-2xl p-6 md:p-8"
                 style={{
@@ -818,8 +706,8 @@ export default function PortfolioClient({
               </div>
             )}
 
-            {/* ─── 5. 가성비 과목 ─── */}
-            {portfolioResult.leverageSubjects.length > 0 && (
+            {/* ─── 5. 가성비 과목 (로그인 전용) ─── */}
+            {isLoggedIn && portfolioResult.leverageSubjects.length > 0 && (
               <div
                 className="rounded-2xl p-6 md:p-8"
                 style={{
@@ -855,7 +743,7 @@ export default function PortfolioClient({
             )}
 
             {/* ─── 추천 과목이 없는 경우 ─── */}
-            {portfolioResult.recommendations.length === 0 && (
+            {isLoggedIn && portfolioResult.recommendations.length === 0 && (
               <div
                 className="rounded-2xl p-6 text-center"
                 style={{
