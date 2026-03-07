@@ -3,12 +3,32 @@
 import { useState } from "react";
 import Link from "next/link";
 
-const NAV_ITEMS = [
-  { href: "/guide", label: "교과 가이드" },
-  { href: "/search", label: "과목 검색" },
-  { href: "/my-strategy", label: "맞춤 전략" },
-  { href: "/policy", label: "2028 정책" },
-  { href: "/contract", label: "계약학과" },
+// 그룹화된 네비게이션 구조
+const NAV_GROUPS = [
+  {
+    label: null, // 그룹 헤더 없음
+    items: [
+      { href: "/guide", label: "교과 가이드" },
+      { href: "/search", label: "과목 검색" },
+    ],
+  },
+  {
+    label: "분석 도구",
+    items: [
+      { href: "/my-strategy", label: "맞춤 전략" },
+      { href: "/portfolio", label: "포트폴리오" },
+      { href: "/synergy", label: "시너지 맵" },
+      { href: "/timeline", label: "타임라인" },
+      { href: "/compare", label: "비교하기" },
+    ],
+  },
+  {
+    label: null,
+    items: [
+      { href: "/policy", label: "2028 정책" },
+      { href: "/contract", label: "계약학과" },
+    ],
+  },
 ];
 
 export default function MobileNav() {
@@ -44,23 +64,42 @@ export default function MobileNav() {
           />
           {/* 드롭다운 메뉴 */}
           <nav
-            className="absolute right-0 top-full mt-2 w-48 rounded-xl overflow-hidden z-50"
+            className="absolute right-0 top-full mt-2 w-52 rounded-xl overflow-hidden z-50"
             style={{
               background: "var(--surface-1)",
               border: "1px solid var(--border-medium)",
               boxShadow: "var(--shadow-card)",
             }}
           >
-            {NAV_ITEMS.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                onClick={() => setOpen(false)}
-                className="block px-4 py-3 text-sm font-medium transition-colors footer-link"
-                style={{ color: "var(--text-primary)", borderBottom: "1px solid var(--border-subtle)" }}
-              >
-                {item.label}
-              </Link>
+            {NAV_GROUPS.map((group, gi) => (
+              <div key={gi}>
+                {/* 그룹 구분선 (첫 번째 그룹 제외) */}
+                {gi > 0 && (
+                  <div className="h-px mx-3" style={{ background: "var(--border-medium)" }} />
+                )}
+                {/* 그룹 헤더 */}
+                {group.label && (
+                  <div
+                    className="px-4 pt-2.5 pb-1"
+                  >
+                    <span className="text-xs font-semibold" style={{ color: "var(--text-tertiary)" }}>
+                      {group.label}
+                    </span>
+                  </div>
+                )}
+                {/* 메뉴 아이템 */}
+                {group.items.map((item) => (
+                  <Link
+                    key={item.href}
+                    href={item.href}
+                    onClick={() => setOpen(false)}
+                    className="block px-4 py-2.5 text-sm font-medium transition-colors footer-link"
+                    style={{ color: "var(--text-primary)" }}
+                  >
+                    {item.label}
+                  </Link>
+                ))}
+              </div>
             ))}
           </nav>
         </>

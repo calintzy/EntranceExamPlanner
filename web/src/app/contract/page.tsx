@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { contractData, getTracksByCorporation } from "@/lib/contract-data";
 import { Footer } from "@/components/footer";
+import BackButton from "@/components/back-button";
 
 export const metadata: Metadata = {
   title: "첨단분야 계약학과 트래커 — 삼성·SK·현대·LG 채용연계 | 입시연구소",
@@ -38,14 +39,7 @@ export default function ContractPage() {
       {/* 헤더 */}
       <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-4">
-          <Link
-            href="/"
-            className="text-slate-500 hover:text-slate-700 transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </Link>
+          <BackButton fallbackHref="/" />
           <h1 className="text-lg font-bold text-slate-900">계약학과 트래커</h1>
           <span className="text-xs text-slate-500 bg-slate-100 px-2 py-1 rounded ml-auto">
             {summary.description}

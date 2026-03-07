@@ -54,7 +54,7 @@
 
 html {
   color-scheme: light;
-  scroll-behavior: smooth;
+  scroll-snap-type: y proximity;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -99,58 +99,89 @@ body {
 }
 
 /* =========================================
-   히어로 배경 — 미묘한 도트 그리드 패턴
+   히어로 배경 — 메시 그래디언트 + 노이즈
    ========================================= */
 .hero-grid-bg {
-  background-image:
-    radial-gradient(circle at 20% 50%, rgba(96, 165, 250, 0.1) 0%, transparent 50%),
-    radial-gradient(circle at 80% 20%, rgba(99, 102, 241, 0.08) 0%, transparent 45%),
-    radial-gradient(circle at 60% 80%, rgba(59, 130, 246, 0.06) 0%, transparent 40%),
-    radial-gradient(rgba(37, 99, 235, 0.04) 1px, transparent 1px);
-  background-size: 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+  background:
+    radial-gradient(ellipse 80% 60% at 20% 40%, rgba(96, 165, 250, 0.18) 0%, transparent 60%),
+    radial-gradient(ellipse 70% 50% at 80% 20%, rgba(99, 102, 241, 0.14) 0%, transparent 55%),
+    radial-gradient(ellipse 60% 70% at 50% 90%, rgba(139, 92, 246, 0.10) 0%, transparent 50%),
+    radial-gradient(ellipse 50% 40% at 70% 60%, rgba(59, 130, 246, 0.08) 0%, transparent 45%),
+    linear-gradient(135deg, #f8f9fc 0%, #eef2ff 40%, #f0f4ff 70%, #f8f9fc 100%);
+}
+
+.hero-grid-bg::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.03'/%3E%3C/svg%3E");
+  background-size: 256px 256px;
+  pointer-events: none;
+  z-index: 0;
 }
 
 
 /* =========================================
-   플로팅 장식 블롭 — 순수 CSS
+   플로팅 장식 블롭 — 드리프트 애니메이션
    ========================================= */
 .hero-blob-1 {
   position: absolute;
-  width: 600px;
-  height: 600px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(96, 165, 250, 0.15) 0%, transparent 70%);
-  filter: blur(60px);
+  width: 700px;
+  height: 700px;
+  border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%;
+  background: radial-gradient(circle, rgba(96, 165, 250, 0.20) 0%, rgba(59, 130, 246, 0.05) 50%, transparent 70%);
+  filter: blur(70px);
   pointer-events: none;
-  top: -200px;
-  right: -100px;
-  animation: blobFloat1 12s ease-in-out infinite;
+  top: -250px;
+  right: -150px;
+  animation: blobDrift1 18s ease-in-out infinite;
 }
 
 .hero-blob-2 {
   position: absolute;
-  width: 400px;
-  height: 400px;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(139, 92, 246, 0.12) 0%, transparent 70%);
+  width: 500px;
+  height: 500px;
+  border-radius: 60% 40% 50% 50% / 40% 60% 40% 60%;
+  background: radial-gradient(circle, rgba(139, 92, 246, 0.16) 0%, rgba(124, 58, 237, 0.04) 50%, transparent 70%);
+  filter: blur(60px);
+  pointer-events: none;
+  bottom: -150px;
+  left: -120px;
+  animation: blobDrift2 22s ease-in-out infinite;
+}
+
+.hero-blob-3 {
+  position: absolute;
+  width: 350px;
+  height: 350px;
+  border-radius: 50% 60% 40% 50% / 60% 40% 60% 40%;
+  background: radial-gradient(circle, rgba(37, 99, 235, 0.10) 0%, transparent 60%);
   filter: blur(50px);
   pointer-events: none;
-  bottom: -100px;
-  left: -80px;
-  animation: blobFloat2 15s ease-in-out infinite;
+  top: 40%;
+  left: 30%;
+  animation: blobDrift3 15s ease-in-out infinite;
 }
 
 
-@keyframes blobFloat1 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(-30px, 20px) scale(1.05); }
-  66% { transform: translate(20px, -15px) scale(0.97); }
+@keyframes blobDrift1 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); border-radius: 40% 60% 60% 40% / 50% 40% 60% 50%; }
+  25% { transform: translate(-40px, 30px) scale(1.06) rotate(5deg); border-radius: 50% 50% 40% 60% / 60% 40% 50% 50%; }
+  50% { transform: translate(20px, -25px) scale(0.97) rotate(-3deg); border-radius: 60% 40% 50% 50% / 40% 60% 40% 60%; }
+  75% { transform: translate(30px, 15px) scale(1.03) rotate(2deg); border-radius: 45% 55% 55% 45% / 55% 45% 55% 45%; }
 }
 
-@keyframes blobFloat2 {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  40% { transform: translate(25px, -20px) scale(1.04); }
-  70% { transform: translate(-15px, 15px) scale(0.98); }
+@keyframes blobDrift2 {
+  0%, 100% { transform: translate(0, 0) scale(1) rotate(0deg); }
+  30% { transform: translate(35px, -30px) scale(1.05) rotate(-4deg); }
+  60% { transform: translate(-20px, 20px) scale(0.96) rotate(3deg); }
+  85% { transform: translate(15px, -10px) scale(1.02) rotate(-1deg); }
+}
+
+@keyframes blobDrift3 {
+  0%, 100% { transform: translate(0, 0) scale(1); opacity: 0.7; }
+  40% { transform: translate(-25px, -20px) scale(1.08); opacity: 1; }
+  70% { transform: translate(20px, 15px) scale(0.95); opacity: 0.6; }
 }
 
 /* =========================================
@@ -316,6 +347,128 @@ body {
   border-radius: 50%;
   background: currentColor;
   opacity: 0.6;
+}
+
+/* =========================================
+   스크롤 스냅 — 섹션 간 자석 효과
+   ========================================= */
+.snap-section {
+  scroll-snap-align: start;
+  scroll-snap-stop: always;
+  scroll-margin-top: 64px; /* sticky 헤더 높이 보정 */
+}
+
+/* 준-풀스크린 섹션 높이 */
+.snap-panel-full {
+  min-height: 100svh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.snap-panel {
+  min-height: clamp(42rem, 85svh, 60rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.snap-panel-short {
+  min-height: clamp(28rem, 60svh, 44rem);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+/* 모바일: 스냅 완화 + 높이 자연스럽게 */
+@media (max-width: 768px) {
+  html {
+    scroll-snap-type: y proximity;
+  }
+
+  .snap-panel-full {
+    min-height: auto;
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+
+  .snap-panel {
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+
+  .snap-panel-short {
+    min-height: auto;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+  }
+}
+
+/* =========================================
+   감성 공감 섹션 — 3-beat 카드
+   ========================================= */
+.empathy-section {
+  background:
+    radial-gradient(ellipse 80% 50% at 50% 50%, rgba(139, 92, 246, 0.04) 0%, transparent 60%),
+    linear-gradient(180deg, var(--surface-0) 0%, #f5f3ff 50%, var(--surface-0) 100%);
+  position: relative;
+}
+
+.empathy-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(139, 92, 246, 0.08);
+  border-radius: 20px;
+  padding: 2rem 1.5rem;
+  text-align: center;
+  transition: transform 0.4s cubic-bezier(0.34, 1.56, 0.64, 1),
+              box-shadow 0.3s ease,
+              border-color 0.3s ease;
+}
+
+.empathy-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(139, 92, 246, 0.10);
+  border-color: rgba(139, 92, 246, 0.16);
+}
+
+.empathy-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+/* =========================================
+   스크롤 트리거 애니메이션 — CSS only
+   ========================================= */
+.scroll-reveal {
+  opacity: 0;
+  transform: translateY(32px);
+  transition: opacity 0.7s cubic-bezier(0.16, 1, 0.3, 1),
+              transform 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.scroll-reveal.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scroll-reveal-delay-1 {
+  transition-delay: 0.1s;
+}
+
+.scroll-reveal-delay-2 {
+  transition-delay: 0.2s;
+}
+
+.scroll-reveal-delay-3 {
+  transition-delay: 0.25s;
 }
 
 /* =========================================

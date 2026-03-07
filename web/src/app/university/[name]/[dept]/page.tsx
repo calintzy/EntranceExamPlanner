@@ -20,6 +20,7 @@ import {
 import { notFound } from "next/navigation";
 import { YearBadge } from "@/components/year-badge";
 import { Footer } from "@/components/footer";
+import BackButton from "@/components/back-button";
 import { GradingInfo } from "@/components/grading-info";
 import { BASE_URL } from "@/lib/site-config";
 
@@ -80,14 +81,7 @@ export default async function DepartmentPage({ params }: PageProps) {
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-4">
-          <Link
-            href={`/university/${encodeURIComponent(univName)}`}
-            className="text-slate-500 hover:text-slate-700 transition-colors"
-          >
-            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
-            </svg>
-          </Link>
+          <BackButton fallbackHref={`/university/${encodeURIComponent(univName)}`} />
           <h1 className="text-lg font-bold text-slate-900">
             {univName} {deptName}
           </h1>

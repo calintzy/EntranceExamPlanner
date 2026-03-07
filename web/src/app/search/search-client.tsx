@@ -6,6 +6,7 @@ import { CourseRecommendationData } from "@/lib/types";
 import { getCleanSubjects } from "@/lib/subject";
 import { searchByMultipleSubjects, type MultiSubjectResult } from "@/lib/course-utils";
 import { Footer } from "@/components/footer";
+import BackButton from "@/components/back-button";
 import SubjectSearchInput from "@/components/subject-search-input";
 import SubjectBrowser from "@/components/subject-browser";
 
@@ -113,24 +114,7 @@ export default function SearchClient({
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
       <header className="border-b border-slate-200 bg-white/80 backdrop-blur-sm sticky top-0 z-10">
         <div className="max-w-5xl mx-auto px-6 py-4 flex items-center gap-4">
-          <Link
-            href="/"
-            className="text-slate-500 hover:text-slate-700 transition-colors"
-          >
-            <svg
-              className="w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M15 19l-7-7 7-7"
-              />
-            </svg>
-          </Link>
+          <BackButton fallbackHref="/" />
           <h1 className="text-lg font-bold text-slate-900">
             역방향 검색
           </h1>

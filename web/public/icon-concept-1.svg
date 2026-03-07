@@ -1,0 +1,20 @@
+<svg width="512" height="512" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- 컨셉 1: 졸업모 + 돋보기 — "연구하는 입시" -->
+  <defs>
+    <linearGradient id="bg1" x1="0" y1="0" x2="512" y2="512">
+      <stop offset="0%" stop-color="#1A56DB"/>
+      <stop offset="100%" stop-color="#1E3A8A"/>
+    </linearGradient>
+  </defs>
+  <rect width="512" height="512" rx="112" fill="url(#bg1)"/>
+  <!-- 졸업모 본체 -->
+  <polygon points="256,120 400,200 256,280 112,200" fill="white"/>
+  <!-- 졸업모 술 -->
+  <line x1="400" y1="200" x2="400" y2="280" stroke="white" stroke-width="8" stroke-linecap="round"/>
+  <circle cx="400" cy="292" r="14" fill="white"/>
+  <!-- 졸업모 아래 곡선 -->
+  <path d="M160 220V300C160 320 208 360 256 360C304 360 352 320 352 300V220" stroke="white" stroke-width="14" stroke-linecap="round" fill="none"/>
+  <!-- 돋보기 (작게, 오른쪽 하단) -->
+  <circle cx="360" cy="370" r="36" stroke="white" stroke-width="12" fill="none"/>
+  <line x1="386" y1="396" x2="416" y2="426" stroke="white" stroke-width="14" stroke-linecap="round"/>
+</svg>
