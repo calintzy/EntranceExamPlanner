@@ -29,7 +29,7 @@ export default function LoginPage() {
           <div className="space-y-3">
             {/* 카카오 로그인 */}
             <button
-              onClick={() => signIn("kakao", { callbackUrl: "/" })}
+              onClick={() => signIn("kakao", { callbackUrl: "/onboarding" })}
               className="w-full flex items-center justify-center gap-2.5 px-4 py-3 text-sm font-semibold rounded-xl transition-all hover:-translate-y-0.5"
               style={{ background: "#FEE500", color: "#191919" }}
             >
@@ -41,7 +41,7 @@ export default function LoginPage() {
 
             {/* 구글 로그인 */}
             <button
-              onClick={() => signIn("google", { callbackUrl: "/" })}
+              onClick={() => signIn("google", { callbackUrl: "/onboarding" })}
               className="w-full flex items-center justify-center gap-2.5 px-4 py-3 text-sm font-semibold rounded-xl transition-all hover:-translate-y-0.5"
               style={{ background: "white", color: "#333", border: "1px solid #ddd" }}
             >
